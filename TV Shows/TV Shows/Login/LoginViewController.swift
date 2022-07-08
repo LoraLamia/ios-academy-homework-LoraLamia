@@ -15,4 +15,7 @@ class LoginViewController: UIViewController {
         print("Test")
     }
     
+    @IBAction func buttonClicked(_ sender: Any) {
+        print("Kliknuto nekoliko puta")
+    }
 }
