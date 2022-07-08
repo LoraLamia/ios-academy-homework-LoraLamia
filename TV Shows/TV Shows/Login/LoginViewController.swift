@@ -8,15 +8,18 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+
+    var counter = 0
     
-    @IBOutlet var numberOfClicks: [UILabel]!
+    @IBOutlet weak var numberOfClicks: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("Test")
+        numberOfClicks.text = "Number of clicks: \(counter)"
     }
     
     @IBAction func buttonClicked(_ sender: Any) {
-        print("Kliknuto nekoliko puta")
+        counter+=1
+        numberOfClicks.text = "Number of clicks: \(counter)"
     }
 }
