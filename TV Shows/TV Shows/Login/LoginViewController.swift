@@ -9,6 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet var numberOfClicks: [UILabel]!
     override func viewDidLoad() {
         super.viewDidLoad()
         
