@@ -37,11 +37,16 @@
                                     <action selector="buttonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vUQ-pB-OFk"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="6wR-Yi-ZH2">
+                                <rect key="frame" x="179" y="311" width="65" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.58992708022170848" green="0.69345373060725302" blue="0.79827183485031128" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <connections>
+                        <outlet property="Spinner" destination="6wR-Yi-ZH2" id="mGe-C6-FDh"/>
                         <outlet property="numberOfClicks" destination="yR5-Cm-feY" id="Z2a-xp-dGY"/>
                     </connections>
                 </viewController>

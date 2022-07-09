@@ -8,9 +8,10 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
-    var counter = 0
     
+    var counter = 0
+
+    @IBOutlet weak var Spinner: UIActivityIndicatorView!
     @IBOutlet weak var numberOfClicks: UILabel!
     
     override func viewDidLoad() {
@@ -21,5 +22,10 @@ class LoginViewController: UIViewController {
     @IBAction func buttonClicked(_ sender: Any) {
         counter+=1
         numberOfClicks.text = "Number of clicks: \(counter)"
+        if counter % 2 == 1 {
+            Spinner.stopAnimating()
+        } else {
+            Spinner.startAnimating()
+        }
     }
 }
