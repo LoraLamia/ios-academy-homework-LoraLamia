@@ -11,21 +11,26 @@ class LoginViewController: UIViewController {
     
     var counter = 0
 
-    @IBOutlet weak var Spinner: UIActivityIndicatorView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var numberOfClicks: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         numberOfClicks.text = "Number of clicks: \(counter)"
+        spinner.startAnimating()
+        spinner.hidesWhenStopped = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.spinner.stopAnimating()
+        }
     }
     
     @IBAction func buttonClicked(_ sender: Any) {
         counter+=1
         numberOfClicks.text = "Number of clicks: \(counter)"
-        if counter % 2 == 1 {
-            Spinner.stopAnimating()
+        if counter % 2 == 0 {
+            spinner.stopAnimating()
         } else {
-            Spinner.startAnimating()
+            spinner.startAnimating()
         }
     }
 }
