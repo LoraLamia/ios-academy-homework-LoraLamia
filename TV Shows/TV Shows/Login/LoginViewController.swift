@@ -7,30 +7,44 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
-    var counter = 0
+    // MARK: Outlets
 
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var numberOfClicks: UILabel!
+    @IBOutlet private weak var spinner: UIActivityIndicatorView!
+    @IBOutlet private weak var counterLabel: UILabel!
+    
+    // MARK: Properties
+    
+    private var counter = 0
+    
+    // MARK: Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        numberOfClicks.text = "Number of clicks: \(counter)"
-        spinner.startAnimating()
-        spinner.hidesWhenStopped = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.spinner.stopAnimating()
-        }
+        setup()
     }
     
-    @IBAction func buttonClicked(_ sender: Any) {
-        counter+=1
-        numberOfClicks.text = "Number of clicks: \(counter)"
+    // MARK: Actions
+    
+    @IBAction private func buttonClicked() {
+        counter += 1
+        counterLabel.text = "Number of clicks: \(counter)"
         if counter % 2 == 0 {
             spinner.stopAnimating()
         } else {
             spinner.startAnimating()
+        }
+    }
+    
+    // MARK: Utility methods
+    
+    private func setup(){
+        counterLabel.text = "Number of clicks: \(counter)"
+        spinner.startAnimating()
+        spinner.hidesWhenStopped = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.spinner.stopAnimating()
         }
     }
 }
