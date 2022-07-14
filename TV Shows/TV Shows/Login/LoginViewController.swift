@@ -9,7 +9,10 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        descriptionLabel.isHidden = true
     }
 }
