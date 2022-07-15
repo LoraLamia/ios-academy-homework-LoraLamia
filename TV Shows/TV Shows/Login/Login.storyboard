@@ -40,8 +40,12 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eT4-06-aqm">
                                 <rect key="frame" x="32" y="313.5" width="32" height="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="emailValueTextFieldChanged" destination="Y6W-OH-hqX" eventType="valueChanged" id="ZKT-yL-fMd"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGV-Fa-vmX">
                                 <rect key="frame" x="20" y="361" width="374" height="1"/>
@@ -59,7 +63,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTJ-s5-zee">
-                                <rect key="frame" x="20" y="454.5" width="24" height="24"/>
+                                <rect key="frame" x="20" y="453" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="hTo-uk-cFh"/>
                                     <constraint firstAttribute="height" constant="24" id="rGJ-Kf-D9T"/>
@@ -71,11 +75,11 @@
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llr-5a-W82">
-                                <rect key="frame" x="52" y="451.5" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llr-5a-W82">
+                                <rect key="frame" x="52" y="451.5" width="324" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8o5-Sx-8AY">
                                 <rect key="frame" x="20" y="511.5" width="374" height="31"/>
@@ -91,6 +95,9 @@
                                 <rect key="frame" x="32" y="387.5" width="32" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="passwordValueTextFieldChanged" destination="Y6W-OH-hqX" eventType="valueChanged" id="0bi-je-iad"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -113,12 +120,12 @@
                             <constraint firstItem="hTJ-s5-zee" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Gq8-QP-IOC"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0um-Hn-BdS" secondAttribute="trailing" constant="20" id="HZk-rL-80o"/>
                             <constraint firstItem="eT4-06-aqm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="Jje-h0-Ncc"/>
-                            <constraint firstItem="hTJ-s5-zee" firstAttribute="top" secondItem="64p-uS-oHC" secondAttribute="bottom" constant="18.5" id="KJJ-PY-JH6"/>
                             <constraint firstItem="KGV-Fa-vmX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="KPp-yF-4hD"/>
                             <constraint firstItem="64p-uS-oHC" firstAttribute="top" secondItem="adp-W4-Iad" secondAttribute="bottom" constant="13.5" id="Nzp-P1-0fC"/>
                             <constraint firstItem="0um-Hn-BdS" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Sj1-7p-wFK"/>
                             <constraint firstItem="seU-Qz-Zu2" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="TeB-AJ-5kH"/>
                             <constraint firstItem="adp-W4-Iad" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="UPC-HI-SUg"/>
+                            <constraint firstItem="hTJ-s5-zee" firstAttribute="top" secondItem="64p-uS-oHC" secondAttribute="bottom" constant="17" id="WgA-Bc-Epc"/>
                             <constraint firstAttribute="trailing" secondItem="ge3-25-sJT" secondAttribute="trailing" id="c5a-Me-IrT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8o5-Sx-8AY" secondAttribute="trailing" constant="20" id="e7Q-IR-mzE"/>
                             <constraint firstItem="Llr-5a-W82" firstAttribute="top" secondItem="64p-uS-oHC" secondAttribute="bottom" constant="15.5" id="fFh-v2-7LY"/>
@@ -126,12 +133,15 @@
                             <constraint firstItem="seU-Qz-Zu2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="76" id="nmN-v2-oyb"/>
                             <constraint firstItem="BbB-Is-HOK" firstAttribute="top" secondItem="8o5-Sx-8AY" secondAttribute="bottom" constant="19" id="o7m-f8-Au1"/>
                             <constraint firstItem="0um-Hn-BdS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="uUw-77-mgg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Llr-5a-W82" secondAttribute="trailing" constant="38" id="woq-Dw-cue"/>
                             <constraint firstItem="Llr-5a-W82" firstAttribute="leading" secondItem="hTJ-s5-zee" secondAttribute="trailing" constant="8" id="yyS-lJ-Vej"/>
                             <constraint firstItem="64p-uS-oHC" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="zlh-8O-2vB"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="0um-Hn-BdS" id="FHc-nP-nCu"/>
+                        <outlet property="emailValueTextField" destination="eT4-06-aqm" id="R56-Zf-Gn1"/>
+                        <outlet property="passwordValueTextField" destination="adp-W4-Iad" id="GU7-L4-MYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
