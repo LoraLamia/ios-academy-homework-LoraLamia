@@ -4,29 +4,69 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var emailValueTextField: UITextField!
-    @IBOutlet weak var passwordValueTextField: UITextField!
+    // MARK: Outlets
     
-    @IBOutlet weak var rememberMeButton: UIButton!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var emailValueTextField: UITextField!
+    @IBOutlet private weak var passwordValueTextField: UITextField!
+    @IBOutlet private weak var rememberMeButton: UIButton!
+    @IBOutlet private weak var registerButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var visibilityButton: UIButton!
+    
+    // MARK: - Properties
+    
+    private var rememberMe = false
+    private var visibility = false
+    
+    // MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUp()
-    }
-    
-  
-    @IBAction func emailValueTextFieldChanged() {
-    }
-    
-    @IBAction func passwordValueTextFieldChanged() {
-    }
-    
-    
-    
-    
-    func setUp () {
-        
         descriptionLabel.isHidden = true
+        visibilityButton.isHidden = true
+        textFieldsSetUp()
+        buttonsSetUp()
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction private func emailValueTextFieldChanged() {
+        updateButtons()
+        descriptionLabel.isHidden = false
+    }
+    
+    @IBAction private func passwordValueTextFieldChanged() {
+        updateButtons()
+        descriptionLabel.isHidden = false
+        visibilityButton.isHidden = false
+    }
+    
+    @IBAction private func rememberMeButtonPressed() {
+        if !rememberMe {
+            rememberMeButton.setImage(UIImage(named: "ic-checkbox-selected"), for: .normal)
+            rememberMe = true
+        } else {
+            rememberMeButton.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
+            rememberMe = false
+        }
+    }
+    
+    @IBAction private func visibilityButtonPressed() {
+        if !visibility {
+            visibilityButton.setImage(UIImage(named: "ic-visible"), for: .normal)
+            visibility = true
+            passwordValueTextField.isSecureTextEntry = false
+        } else {
+            visibilityButton.setImage(UIImage(named: "ic-invisible"), for: .normal)
+            visibility = false
+            passwordValueTextField.isSecureTextEntry = true
+        }
+    }
+    
+    // MARK: - Utility methods
+    
+    private func textFieldsSetUp () {
         
         emailValueTextField.attributedPlaceholder = NSAttributedString(
             string: "Email",
@@ -36,14 +76,32 @@ final class LoginViewController: UIViewController {
             string: "Password",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.8)]
         )
+    }
+    
+    private func buttonsSetUp () {
+        rememberMeButton.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
         
-        rememberMeButton.backgroundColor = .clear
-        rememberMeButton.layer.borderColor = UIColor.white.cgColor
-        rememberMeButton.layer.borderWidth = 3
-        rememberMeButton.layer.cornerRadius = 5
+        loginButton.isEnabled = false
+        loginButton.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        loginButton.layer.cornerRadius = 24
+        loginButton.setTitleColor(.white.withAlphaComponent(0.7), for: .disabled)
         
+        registerButton.isEnabled = false
+        registerButton.backgroundColor = .clear
+        registerButton.layer.cornerRadius = 24
+        registerButton.setTitleColor(.white.withAlphaComponent(0.7), for: .disabled)
+    }
+    
+    private func updateButtons () {
+        guard let emailText = emailValueTextField.text, let passwordText = passwordValueTextField.text else { return }
         
-        
-        
+        if !emailText.isEmpty && !passwordText.isEmpty {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = .white
+            loginButton.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        } else {
+            registerButton.isEnabled = true
+            registerButton.tintColor = .white
+        }
     }
 }
