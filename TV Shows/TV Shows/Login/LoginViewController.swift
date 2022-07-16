@@ -23,7 +23,6 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionLabel.isHidden = true
         visibilityButton.isHidden = true
         textFieldsSetUp()
         buttonsSetUp()
@@ -33,12 +32,10 @@ final class LoginViewController: UIViewController {
     
     @IBAction private func emailValueTextFieldChanged() {
         updateButtons()
-        descriptionLabel.isHidden = false
     }
     
     @IBAction private func passwordValueTextFieldChanged() {
         updateButtons()
-        descriptionLabel.isHidden = false
         visibilityButton.isHidden = false
     }
     
@@ -53,14 +50,14 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func visibilityButtonPressed() {
-        if !visibility {
+        if visibility {
             visibilityButton.setImage(UIImage(named: "ic-visible"), for: .normal)
-            visibility = true
-            passwordValueTextField.isSecureTextEntry = false
-        } else {
-            visibilityButton.setImage(UIImage(named: "ic-invisible"), for: .normal)
             visibility = false
             passwordValueTextField.isSecureTextEntry = true
+        } else {
+            visibilityButton.setImage(UIImage(named: "ic-invisible"), for: .normal)
+            visibility = true
+            passwordValueTextField.isSecureTextEntry = false
         }
     }
     
@@ -79,8 +76,6 @@ final class LoginViewController: UIViewController {
     }
     
     private func buttonsSetUp () {
-        rememberMeButton.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
-        
         loginButton.isEnabled = false
         loginButton.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         loginButton.layer.cornerRadius = 24
@@ -90,6 +85,8 @@ final class LoginViewController: UIViewController {
         registerButton.backgroundColor = .clear
         registerButton.layer.cornerRadius = 24
         registerButton.setTitleColor(.white.withAlphaComponent(0.7), for: .disabled)
+        
+        descriptionLabel.isHidden = true
     }
     
     private func updateButtons () {
@@ -99,9 +96,11 @@ final class LoginViewController: UIViewController {
             loginButton.isEnabled = true
             loginButton.backgroundColor = .white
             loginButton.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
-        } else {
             registerButton.isEnabled = true
             registerButton.tintColor = .white
+            descriptionLabel.isHidden = false
+        } else {
+            buttonsSetUp()
         }
     }
 }

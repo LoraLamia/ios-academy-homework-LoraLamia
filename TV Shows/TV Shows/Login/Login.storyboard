@@ -69,7 +69,7 @@
                                     <constraint firstAttribute="height" constant="24" id="rGJ-Kf-D9T"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=""/>
+                                <buttonConfiguration key="configuration" style="plain" image="ic-checkbox-unselected" title=""/>
                                 <connections>
                                     <action selector="rememberMeButtonPressed" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mwm-KP-C6z"/>
                                 </connections>
@@ -112,7 +112,7 @@
                                     <constraint firstAttribute="height" constant="24" id="vr0-cw-SRa"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="ic-invisible" title=""/>
+                                <buttonConfiguration key="configuration" style="plain" image="ic-visible" title=""/>
                                 <connections>
                                     <action selector="visibilityButtonPressed" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zJE-pH-b0w"/>
                                 </connections>
@@ -176,7 +176,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic-invisible" width="24" height="24"/>
+        <image name="ic-checkbox-unselected" width="24" height="24"/>
+        <image name="ic-visible" width="24" height="24"/>
         <image name="logo-white" width="162" height="38"/>
         <image name="splash-top-left" width="140" height="100"/>
         <image name="splash-top-right" width="202" height="266"/>
