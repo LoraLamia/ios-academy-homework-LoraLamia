@@ -25,7 +25,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         visibilityButton.isHidden = true
         textFieldsSetUp()
-        buttonsSetUp()
+        setButtonsDisabled()
     }
     
     // MARK: - Actions
@@ -75,7 +75,7 @@ final class LoginViewController: UIViewController {
         )
     }
     
-    private func buttonsSetUp () {
+    private func setButtonsDisabled () {
         loginButton.isEnabled = false
         loginButton.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         loginButton.layer.cornerRadius = 24
@@ -89,18 +89,24 @@ final class LoginViewController: UIViewController {
         descriptionLabel.isHidden = true
     }
     
+    private func setButtonsEnabled () {
+        loginButton.isEnabled = true
+        loginButton.backgroundColor = .white
+        loginButton.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        
+        registerButton.isEnabled = true
+        registerButton.tintColor = .white
+        descriptionLabel.isHidden = false
+    }
+    
     private func updateButtons () {
         guard let emailText = emailValueTextField.text, let passwordText = passwordValueTextField.text else { return }
         
         if !emailText.isEmpty && !passwordText.isEmpty {
-            loginButton.isEnabled = true
-            loginButton.backgroundColor = .white
-            loginButton.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
-            registerButton.isEnabled = true
-            registerButton.tintColor = .white
-            descriptionLabel.isHidden = false
+            setButtonsEnabled()
         } else {
-            buttonsSetUp()
+            setButtonsDisabled()
         }
     }
+    
 }
