@@ -7,8 +7,8 @@ final class LoginViewController: UIViewController {
     // MARK: Outlets
     
     @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var emailValueTextField: UITextField!
-    @IBOutlet private weak var passwordValueTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var rememberMeButton: UIButton!
     @IBOutlet private weak var registerButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
@@ -30,11 +30,11 @@ final class LoginViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction private func emailValueTextFieldChanged() {
+    @IBAction private func emailTextFieldChanged() {
         updateButtons()
     }
     
-    @IBAction private func passwordValueTextFieldChanged() {
+    @IBAction private func passwordTextFieldChanged() {
         updateButtons()
         visibilityButton.isHidden = false
     }
@@ -53,11 +53,11 @@ final class LoginViewController: UIViewController {
         if visibility {
             visibilityButton.setImage(UIImage(named: "ic-visible"), for: .normal)
             visibility = false
-            passwordValueTextField.isSecureTextEntry = true
+            passwordTextField.isSecureTextEntry = true
         } else {
             visibilityButton.setImage(UIImage(named: "ic-invisible"), for: .normal)
             visibility = true
-            passwordValueTextField.isSecureTextEntry = false
+            passwordTextField.isSecureTextEntry = false
         }
     }
     
@@ -65,11 +65,11 @@ final class LoginViewController: UIViewController {
     
     private func textFieldsSetUp () {
         
-        emailValueTextField.attributedPlaceholder = NSAttributedString(
+        emailTextField.attributedPlaceholder = NSAttributedString(
             string: "Email",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.8)]
         )
-        passwordValueTextField.attributedPlaceholder = NSAttributedString(
+        passwordTextField.attributedPlaceholder = NSAttributedString(
             string: "Password",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.8)]
         )
@@ -100,7 +100,7 @@ final class LoginViewController: UIViewController {
     }
     
     private func updateButtons () {
-        guard let emailText = emailValueTextField.text, let passwordText = passwordValueTextField.text else { return }
+        guard let emailText = emailTextField.text, let passwordText = passwordTextField.text else { return }
         
         if !emailText.isEmpty && !passwordText.isEmpty {
             setButtonsEnabled()
