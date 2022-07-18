@@ -26,6 +26,7 @@ final class LoginViewController: UIViewController {
         visibilityButton.isHidden = true
         textFieldsSetUp()
         setButtonsDisabled()
+        setButtonImages()
     }
     
     // MARK: - Actions
@@ -40,30 +41,17 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func rememberMeButtonPressed() {
-        if !rememberMe {
-            rememberMeButton.setImage(UIImage(named: "ic-checkbox-selected"), for: .normal)
-            rememberMe = true
-        } else {
-            rememberMeButton.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
-            rememberMe = false
-        }
+        rememberMeButton.isSelected.toggle()
     }
     
     @IBAction private func visibilityButtonPressed() {
-        if visibility {
-            visibilityButton.setImage(UIImage(named: "ic-visible"), for: .normal)
-            visibility = false
-            passwordTextField.isSecureTextEntry = true
-        } else {
-            visibilityButton.setImage(UIImage(named: "ic-invisible"), for: .normal)
-            visibility = true
-            passwordTextField.isSecureTextEntry = false
-        }
+        visibilityButton.isSelected.toggle()
+        passwordTextField.isSecureTextEntry = !visibilityButton.isSelected
     }
     
     // MARK: - Utility methods
     
-    private func textFieldsSetUp () {
+    private func textFieldsSetUp() {
         
         emailTextField.attributedPlaceholder = NSAttributedString(
             string: "Email",
@@ -75,7 +63,14 @@ final class LoginViewController: UIViewController {
         )
     }
     
-    private func setButtonsDisabled () {
+    private func setButtonImages() {
+        rememberMeButton.setImage(UIImage(named: "ic-checkbox-selected"), for: .selected)
+        rememberMeButton.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
+        visibilityButton.setImage(UIImage(named: "ic-visible"), for: .normal)
+        visibilityButton.setImage(UIImage(named: "ic-invisible"), for: .selected)
+    }
+    
+    private func setButtonsDisabled() {
         loginButton.isEnabled = false
         loginButton.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         loginButton.layer.cornerRadius = 24
@@ -89,7 +84,7 @@ final class LoginViewController: UIViewController {
         descriptionLabel.isHidden = true
     }
     
-    private func setButtonsEnabled () {
+    private func setButtonsEnabled() {
         loginButton.isEnabled = true
         loginButton.backgroundColor = .white
         loginButton.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
@@ -99,7 +94,7 @@ final class LoginViewController: UIViewController {
         descriptionLabel.isHidden = false
     }
     
-    private func updateButtons () {
+    private func updateButtons() {
         guard let emailText = emailTextField.text, let passwordText = passwordTextField.text else { return }
         
         if !emailText.isEmpty && !passwordText.isEmpty {
