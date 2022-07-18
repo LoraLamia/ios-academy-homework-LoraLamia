@@ -198,9 +198,9 @@
                         <outlet property="emailTextField" destination="imI-Y3-501" id="8eB-hI-Wap"/>
                         <outlet property="loginButton" destination="v8A-GS-Vyp" id="ck2-RB-HHk"/>
                         <outlet property="passwordTextField" destination="zvs-eL-48J" id="m1H-zJ-Vb6"/>
+                        <outlet property="passwordVisibilityButton" destination="sE1-01-oXO" id="Ir5-DO-k5t"/>
                         <outlet property="registerButton" destination="Z7S-39-IJX" id="VCi-0v-ny6"/>
                         <outlet property="rememberMeButton" destination="GZt-mU-rcc" id="PNR-9o-Dj4"/>
-                        <outlet property="visibilityButton" destination="sE1-01-oXO" id="1b4-yU-BhO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asA-rk-TJF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

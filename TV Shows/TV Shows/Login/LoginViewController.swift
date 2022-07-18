@@ -12,7 +12,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var rememberMeButton: UIButton!
     @IBOutlet private weak var registerButton: UIButton!
     @IBOutlet private weak var loginButton: UIButton!
-    @IBOutlet private weak var visibilityButton: UIButton!
+    @IBOutlet private weak var passwordVisibilityButton: UIButton!
     
     // MARK: - Properties
     
@@ -23,9 +23,9 @@ final class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        visibilityButton.isHidden = true
+        passwordVisibilityButton.isHidden = true
         textFieldsSetUp()
-        setButtonsDisabled()
+        setLoginRegisterButtons(enabled: false)
         setButtonImages()
     }
     
@@ -37,7 +37,7 @@ final class LoginViewController: UIViewController {
     
     @IBAction private func passwordTextFieldChanged() {
         updateButtons()
-        visibilityButton.isHidden = false
+        passwordVisibilityButton.isHidden = false
     }
     
     @IBAction private func rememberMeButtonPressed() {
@@ -45,8 +45,8 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func visibilityButtonPressed() {
-        visibilityButton.isSelected.toggle()
-        passwordTextField.isSecureTextEntry = !visibilityButton.isSelected
+        passwordVisibilityButton.isSelected.toggle()
+        passwordTextField.isSecureTextEntry = !passwordVisibilityButton.isSelected
     }
     
     // MARK: - Utility methods
@@ -66,41 +66,37 @@ final class LoginViewController: UIViewController {
     private func setButtonImages() {
         rememberMeButton.setImage(UIImage(named: "ic-checkbox-selected"), for: .selected)
         rememberMeButton.setImage(UIImage(named: "ic-checkbox-unselected"), for: .normal)
-        visibilityButton.setImage(UIImage(named: "ic-visible"), for: .normal)
-        visibilityButton.setImage(UIImage(named: "ic-invisible"), for: .selected)
+        passwordVisibilityButton.setImage(UIImage(named: "ic-visible"), for: .normal)
+        passwordVisibilityButton.setImage(UIImage(named: "ic-invisible"), for: .selected)
     }
     
-    private func setButtonsDisabled() {
-        loginButton.isEnabled = false
-        loginButton.backgroundColor = UIColor.white.withAlphaComponent(0.3)
-        loginButton.layer.cornerRadius = 24
-        loginButton.setTitleColor(.white.withAlphaComponent(0.7), for: .disabled)
-        
-        registerButton.isEnabled = false
-        registerButton.backgroundColor = .clear
-        registerButton.layer.cornerRadius = 24
-        registerButton.setTitleColor(.white.withAlphaComponent(0.7), for: .disabled)
-        
-        descriptionLabel.isHidden = true
-    }
     
-    private func setButtonsEnabled() {
-        loginButton.isEnabled = true
-        loginButton.backgroundColor = .white
-        loginButton.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+    private func setLoginRegisterButtons(enabled: Bool) {
+        if enabled {
+            loginButton.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+            registerButton.tintColor = .white
+        } else {
+            loginButton.layer.cornerRadius = 24
+            loginButton.setTitleColor(.white.withAlphaComponent(0.7), for: .disabled)
+    
+            registerButton.backgroundColor = .clear
+            registerButton.layer.cornerRadius = 24
+            registerButton.setTitleColor(.white.withAlphaComponent(0.7), for: .disabled)
+        }
         
-        registerButton.isEnabled = true
-        registerButton.tintColor = .white
-        descriptionLabel.isHidden = false
+        loginButton.isEnabled = enabled
+        loginButton.backgroundColor = enabled ? .white : UIColor.white.withAlphaComponent(0.3)
+        registerButton.isEnabled = enabled
+        descriptionLabel.isHidden = !enabled
     }
     
     private func updateButtons() {
         guard let emailText = emailTextField.text, let passwordText = passwordTextField.text else { return }
         
         if !emailText.isEmpty && !passwordText.isEmpty {
-            setButtonsEnabled()
+            setLoginRegisterButtons(enabled: true)
         } else {
-            setButtonsDisabled()
+            setLoginRegisterButtons(enabled: false)
         }
     }
     
