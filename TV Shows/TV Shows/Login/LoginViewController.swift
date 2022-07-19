@@ -16,7 +16,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var passwordVisibilityButton: UIButton!
     
-    //MARK: ne sjecam se
+    // MARK: - Properties
     
     private var user: UserResponse?
     
