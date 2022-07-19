@@ -14,11 +14,6 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var passwordVisibilityButton: UIButton!
     
-    // MARK: - Properties
-    
-    private var rememberMe = false
-    private var visibility = false
-    
     // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
