@@ -48,7 +48,8 @@ final class LoginViewController: UIViewController {
     
     @IBAction private func passwordTextFieldChanged() {
         updateButtons()
-        passwordVisibilityButton.isHidden = false
+        guard let passwordText = passwordTextField.text else { return }
+        passwordVisibilityButton.isHidden = passwordText.isEmpty
     }
     
     @IBAction private func rememberMeButtonPressed() {
