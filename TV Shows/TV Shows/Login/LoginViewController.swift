@@ -44,6 +44,14 @@ final class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = !passwordVisibilityButton.isSelected
     }
     
+    @IBAction func LoginButtonPressed() {
+        navigateToHomeViewController()
+    }
+    
+    @IBAction func RegisterButtonPressed() {
+        navigateToHomeViewController()
+    }
+    
     // MARK: - Utility methods
     
     private func textFieldsSetUp() {
@@ -93,6 +101,12 @@ final class LoginViewController: UIViewController {
         } else {
             setLoginRegisterButtons(enabled: false)
         }
+    }
+    
+    private func navigateToHomeViewController() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        navigationController?.pushViewController(homeViewController, animated: true)
     }
     
 }

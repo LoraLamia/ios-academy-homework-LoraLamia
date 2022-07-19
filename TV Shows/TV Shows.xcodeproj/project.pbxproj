@@ -13,6 +13,8 @@
 		42766E3C2875F80C00CF7E3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42766E3A2875F80C00CF7E3D /* LaunchScreen.storyboard */; };
 		427D03E828784B7200BBA855 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427D03E728784B7200BBA855 /* LoginViewController.swift */; };
 		427D03EC28784FCE00BBA855 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427D03EB28784FCE00BBA855 /* Login.storyboard */; };
+		4289BAA72886B0AF00588E3E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4289BAA62886B0AF00588E3E /* HomeViewController.swift */; };
+		4289BAA92886B0C300588E3E /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4289BAA82886B0C300588E3E /* Home.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		42766E3D2875F80C00CF7E3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		427D03E728784B7200BBA855 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		427D03EB28784FCE00BBA855 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		4289BAA62886B0AF00588E3E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4289BAA82886B0C300588E3E /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		42766E2E2875F80A00CF7E3D /* TV Shows */ = {
 			isa = PBXGroup;
 			children = (
+				4289BAA52886B06E00588E3E /* Home */,
 				427D03E628784B3200BBA855 /* Login */,
 				42766E2F2875F80A00CF7E3D /* AppDelegate.swift */,
 				42766E312875F80A00CF7E3D /* SceneDelegate.swift */,
@@ -73,6 +78,15 @@
 				427D03EB28784FCE00BBA855 /* Login.storyboard */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		4289BAA52886B06E00588E3E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4289BAA62886B0AF00588E3E /* HomeViewController.swift */,
+				4289BAA82886B0C300588E3E /* Home.storyboard */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +150,7 @@
 				42766E3C2875F80C00CF7E3D /* LaunchScreen.storyboard in Resources */,
 				427D03EC28784FCE00BBA855 /* Login.storyboard in Resources */,
 				42766E392875F80C00CF7E3D /* Assets.xcassets in Resources */,
+				4289BAA92886B0C300588E3E /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +164,7 @@
 				427D03E828784B7200BBA855 /* LoginViewController.swift in Sources */,
 				42766E302875F80A00CF7E3D /* AppDelegate.swift in Sources */,
 				42766E322875F80A00CF7E3D /* SceneDelegate.swift in Sources */,
+				4289BAA72886B0AF00588E3E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
