@@ -83,7 +83,8 @@ final class LoginViewController: UIViewController {
                 MBProgressHUD.hide(for: self.view, animated: true)
                 switch dataResponse.result {
                 case .success(let responseUser):
-                    self.handleSuccesCase(responseUser: responseUser)
+                    let headers = dataResponse.response?.headers.dictionary ?? [:]
+                    self.handleSuccesCase(responseUser: responseUser, headers: headers)
                 case .failure:
                     self.handleErrorCase()
                 }
@@ -115,7 +116,8 @@ final class LoginViewController: UIViewController {
                 MBProgressHUD.hide(for: self.view, animated: true)
                 switch dataResponse.result {
                 case .success(let responseUser):
-                    self.handleSuccesCase(responseUser: responseUser)
+                    let headers = dataResponse.response?.headers.dictionary ?? [:]
+                    self.handleSuccesCase(responseUser: responseUser, headers: headers)
                 case .failure:
                     self.handleErrorCase()
                 }
@@ -180,9 +182,8 @@ final class LoginViewController: UIViewController {
         navigationController?.pushViewController(homeViewController, animated: true)
     }
     
-    private func handleSuccesCase(responseUser: UserResponse) {
-//         let headers = response.response?.headers.dictionary ?? [:]
-         print("Success: \(responseUser)")
+    private func handleSuccesCase(responseUser: UserResponse, headers: [String: String]) {
+         print(headers)
          self.user = responseUser
          self.pushHomeViewController()
     }
