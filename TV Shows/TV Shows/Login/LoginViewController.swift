@@ -31,15 +31,15 @@ final class LoginViewController: UIViewController {
         setButtonImages()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: animated)
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     // MARK: - Actions
     
@@ -84,6 +84,10 @@ final class LoginViewController: UIViewController {
                 MBProgressHUD.hide(for: self.view, animated: true)
                 switch response.result {
                 case .success(let responseUser):
+//                    AF.request(method: .get,"https://tv-shows.infinum.academy/users/sign_in" , parameters: parameters, headers: responseUser).responseJSON {
+//                            response in
+//                            print(response.response?.allHeaderFields)
+//                    }
                     print("Success tralala: \(responseUser)")
                     self.passwordUser = responseUser
                     self.pushHomeViewController()
