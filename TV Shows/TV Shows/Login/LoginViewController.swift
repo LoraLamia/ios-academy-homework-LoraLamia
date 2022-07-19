@@ -16,6 +16,11 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var passwordVisibilityButton: UIButton!
     
+    //MARK: ne sjecam se
+    
+    private var registerUser: UserResponse?
+    private var passwordUser: UserResponse?
+    
     // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
@@ -57,7 +62,36 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func LoginButtonPressed() {
-        navigateToHomeViewController()
+        guard let emailText = emailTextField.text, let passwordText = passwordTextField.text else { return }
+        
+        if !emailText.isEmpty && !passwordText.isEmpty {
+            let parameters: [String: String] = [
+                "email": emailText,
+                "password": passwordText
+            ]
+            
+            MBProgressHUD.showAdded(to: view, animated: true)
+
+            AF.request(
+                "https://tv-shows.infinum.academy/users/sign_in",
+                method: .post,
+                parameters: parameters,
+                encoder: JSONParameterEncoder.default
+            )
+            .validate()
+            .responseDecodable(of: UserResponse.self) { [weak self] response in
+                guard let self = self else { return }
+                MBProgressHUD.hide(for: self.view, animated: true)
+                switch response.result {
+                case .success(let responseUser):
+                    print("Success tralala: \(responseUser)")
+                    self.passwordUser = responseUser
+                    self.pushHomeViewController()
+                case .failure:
+                    print("error")
+                }
+            }
+        }
     }
     
     @IBAction func RegisterButtonPressed() {
@@ -83,9 +117,10 @@ final class LoginViewController: UIViewController {
                 guard let self = self else { return }
                 MBProgressHUD.hide(for: self.view, animated: true)
                 switch response.result {
-                case .success(let user):
-                    print("Success: \(user)")
-                    self.navigateToHomeViewController()
+                case .success(let responseUser):
+                    print("Success: \(responseUser)")
+                    self.registerUser = responseUser
+                    self.pushHomeViewController()
                 case .failure:
                     print("error")
                 }
@@ -144,7 +179,7 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func navigateToHomeViewController() {
+    private func pushHomeViewController() {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         navigationController?.pushViewController(homeViewController, animated: true)
