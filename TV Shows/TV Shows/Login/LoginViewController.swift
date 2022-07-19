@@ -18,8 +18,7 @@ final class LoginViewController: UIViewController {
     
     //MARK: ne sjecam se
     
-    private var registerUser: UserResponse?
-    private var passwordUser: UserResponse?
+    private var user: UserResponse?
     
     // MARK: - Lifecycle methods
     
@@ -79,20 +78,14 @@ final class LoginViewController: UIViewController {
                 encoder: JSONParameterEncoder.default
             )
             .validate()
-            .responseDecodable(of: UserResponse.self) { [weak self] response in
+            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
                 guard let self = self else { return }
                 MBProgressHUD.hide(for: self.view, animated: true)
-                switch response.result {
+                switch dataResponse.result {
                 case .success(let responseUser):
-//                    AF.request(method: .get,"https://tv-shows.infinum.academy/users/sign_in" , parameters: parameters, headers: responseUser).responseJSON {
-//                            response in
-//                            print(response.response?.allHeaderFields)
-//                    }
-                    print("Success tralala: \(responseUser)")
-                    self.passwordUser = responseUser
-                    self.pushHomeViewController()
+                    self.handleSuccesCase(responseUser: responseUser)
                 case .failure:
-                    print("error")
+                    self.handleErrorCase()
                 }
             }
         }
@@ -117,16 +110,14 @@ final class LoginViewController: UIViewController {
                 encoder: JSONParameterEncoder.default
             )
             .validate()
-            .responseDecodable(of: UserResponse.self) { [weak self] response in
+            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
                 guard let self = self else { return }
                 MBProgressHUD.hide(for: self.view, animated: true)
-                switch response.result {
+                switch dataResponse.result {
                 case .success(let responseUser):
-                    print("Success: \(responseUser)")
-                    self.registerUser = responseUser
-                    self.pushHomeViewController()
+                    self.handleSuccesCase(responseUser: responseUser)
                 case .failure:
-                    print("error")
+                    self.handleErrorCase()
                 }
             }
         }
@@ -187,6 +178,17 @@ final class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    private func handleSuccesCase(responseUser: UserResponse) {
+//         let headers = response.response?.headers.dictionary ?? [:]
+         print("Success: \(responseUser)")
+         self.user = responseUser
+         self.pushHomeViewController()
+    }
+    
+    private func handleErrorCase() {
+        print("error")
     }
     
 }
