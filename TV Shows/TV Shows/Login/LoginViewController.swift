@@ -1,6 +1,8 @@
 
 
 import UIKit
+import Alamofire
+import MBProgressHUD
 
 final class LoginViewController: UIViewController {
     
@@ -23,6 +25,16 @@ final class LoginViewController: UIViewController {
         setLoginRegisterButtons(enabled: false)
         setButtonImages()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
     
     // MARK: - Actions
     
@@ -49,7 +61,36 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction func RegisterButtonPressed() {
-        navigateToHomeViewController()
+        guard let emailText = emailTextField.text, let passwordText = passwordTextField.text else { return }
+        
+        if !emailText.isEmpty && !passwordText.isEmpty {
+            let parameters: [String: String] = [
+                "email": emailText,
+                "password": passwordText,
+                "password_confirmation": passwordText
+            ]
+            
+            MBProgressHUD.showAdded(to: view, animated: true)
+
+            AF.request(
+                "https://tv-shows.infinum.academy/users",
+                method: .post,
+                parameters: parameters,
+                encoder: JSONParameterEncoder.default
+            )
+            .validate()
+            .responseDecodable(of: UserResponse.self) { [weak self] response in
+                guard let self = self else { return }
+                MBProgressHUD.hide(for: self.view, animated: true)
+                switch response.result {
+                case .success(let user):
+                    print("Success: \(user)")
+                    self.navigateToHomeViewController()
+                case .failure:
+                    print("error")
+                }
+            }
+        }
     }
     
     // MARK: - Utility methods
