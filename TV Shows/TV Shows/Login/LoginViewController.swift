@@ -182,16 +182,18 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func pushHomeViewController() {
+    private func pushHomeViewController(authInfo: AuthInfo, responseUser: UserResponse) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        homeViewController.authInfo = authInfo
+        homeViewController.user = responseUser
         navigationController?.pushViewController(homeViewController, animated: true)
     }
     
     private func handleSuccesCase(responseUser: UserResponse, headers: [String: String]) {
-         print(headers)
-         self.user = responseUser
-         self.pushHomeViewController()
+        guard let authInfo = try? AuthInfo(headers: headers) else { return }
+        self.user = responseUser
+        self.pushHomeViewController(authInfo: authInfo, responseUser: responseUser)
     }
     
     private func handleErrorCase() {

@@ -3,6 +3,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    var user: UserResponse?
+    var authInfo: AuthInfo?
+    
     // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
