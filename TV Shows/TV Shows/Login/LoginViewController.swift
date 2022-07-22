@@ -1,6 +1,8 @@
 
 
 import UIKit
+import Alamofire
+import MBProgressHUD
 
 final class LoginViewController: UIViewController {
     
@@ -14,6 +16,10 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var passwordVisibilityButton: UIButton!
     
+    // MARK: - Properties
+    
+    private var user: UserResponse?
+    
     // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
@@ -24,6 +30,11 @@ final class LoginViewController: UIViewController {
         setButtonImages()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     // MARK: - Actions
     
     @IBAction private func emailTextFieldChanged() {
@@ -32,7 +43,8 @@ final class LoginViewController: UIViewController {
     
     @IBAction private func passwordTextFieldChanged() {
         updateButtons()
-        passwordVisibilityButton.isHidden = false
+        guard let passwordText = passwordTextField.text else { return }
+        passwordVisibilityButton.isHidden = passwordText.isEmpty
     }
     
     @IBAction private func rememberMeButtonPressed() {
@@ -42,6 +54,81 @@ final class LoginViewController: UIViewController {
     @IBAction private func visibilityButtonPressed() {
         passwordVisibilityButton.isSelected.toggle()
         passwordTextField.isSecureTextEntry = !passwordVisibilityButton.isSelected
+    }
+    
+    @IBAction func loginButtonPressed() {
+        guard
+            let emailText = emailTextField.text,
+            let passwordText = passwordTextField.text,
+            !emailText.isEmpty,
+            !passwordText.isEmpty
+        else {
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "email": emailText,
+            "password": passwordText
+        ]
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+
+        AF.request(
+            "https://tv-shows.infinum.academy/users/sign_in",
+            method: .post,
+            parameters: parameters,
+            encoder: JSONParameterEncoder.default
+        )
+        .validate()
+        .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
+            guard let self = self else { return }
+            MBProgressHUD.hide(for: self.view, animated: true)
+            switch dataResponse.result {
+            case .success(let responseUser):
+                let headers = dataResponse.response?.headers.dictionary ?? [:]
+                self.handleSuccesCase(responseUser: responseUser, headers: headers)
+            case .failure:
+                self.handleErrorCase()
+            }
+        }
+    }
+    
+    @IBAction func registerButtonPressed() {
+        guard
+            let emailText = emailTextField.text,
+            let passwordText = passwordTextField.text,
+            !emailText.isEmpty,
+            !passwordText.isEmpty
+        else {
+            return
+        }
+        
+        let parameters: [String: String] = [
+            "email": emailText,
+            "password": passwordText,
+            "password_confirmation": passwordText
+        ]
+            
+        MBProgressHUD.showAdded(to: view, animated: true)
+
+        AF.request(
+            "https://tv-shows.infinum.academy/users",
+            method: .post,
+            parameters: parameters,
+            encoder: JSONParameterEncoder.default
+        )
+        .validate()
+        .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
+            guard let self = self else { return }
+            MBProgressHUD.hide(for: self.view, animated: true)
+            switch dataResponse.result {
+            case .success(let responseUser):
+                let headers = dataResponse.response?.headers.dictionary ?? [:]
+                self.handleSuccesCase(responseUser: responseUser, headers: headers)
+            case .failure:
+                self.handleErrorCase()
+            }
+        }
     }
     
     // MARK: - Utility methods
@@ -93,6 +180,22 @@ final class LoginViewController: UIViewController {
         } else {
             setLoginRegisterButtons(enabled: false)
         }
+    }
+    
+    private func pushHomeViewController() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    
+    private func handleSuccesCase(responseUser: UserResponse, headers: [String: String]) {
+         print(headers)
+         self.user = responseUser
+         self.pushHomeViewController()
+    }
+    
+    private func handleErrorCase() {
+        print("error")
     }
     
 }

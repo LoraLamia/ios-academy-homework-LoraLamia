@@ -1,0 +1,8 @@
+
+platform :ios, '13.0'
+use_frameworks!
+
+target 'TV Shows' do
+  pod "Alamofire"
+  pod "MBProgressHUD"
+end
