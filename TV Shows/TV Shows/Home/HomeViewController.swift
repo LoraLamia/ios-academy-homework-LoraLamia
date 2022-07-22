@@ -20,6 +20,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Shows"
+        
         showTableView.delegate = self
         showTableView.dataSource = self
         
@@ -74,12 +76,10 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
-        
         guard let showsList = showsList else { return cell }
         let title = showsList.shows[indexPath.row].title
         cell.setShowTitle(text: title)
 
-        
         return cell
     }
 }

@@ -1,9 +1,3 @@
-//
-//  HomeTableViewCell.swift
-//  TV Shows
-//
-//  Created by Infinum on 22.07.2022..
-//
 
 import UIKit
 
