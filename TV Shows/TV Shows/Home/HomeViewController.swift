@@ -19,7 +19,8 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        startSetUp()
+        
+        setUp()
         
         guard let authInfo = authInfo else { return }
         AF.request(
@@ -44,22 +45,25 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     //MARK: - Utility methods
     
     private func handleSuccesCase(showsList: ShowsResponse) {
+        
         self.showsList = showsList
         showTableView.reloadData()
         print("succes")
     }
     
     private func handleErrorCase() {
+        
         print("error")
     }
     
-    private func startSetUp() {
+    private func setUp() {
         
         self.navigationItem.title = "Shows"
         navigationController?.setViewControllers([self], animated: true)
@@ -72,6 +76,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         guard let showsList = showsList else { return 0 }
         return showsList.shows.count
     }
@@ -79,7 +84,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
-        guard let showsList = showsList else { return cell }
+        guard let showsList = showsList else { return UITableViewCell() }
         let title = showsList.shows[indexPath.row].title
         cell.setShowTitle(text: title)
 
@@ -96,7 +101,7 @@ extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
