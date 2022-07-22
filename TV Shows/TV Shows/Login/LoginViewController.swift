@@ -197,7 +197,11 @@ final class LoginViewController: UIViewController {
     }
     
     private func handleErrorCase() {
-        print("error")
+        let alert = UIAlertController(title: "", message: "error", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+        NSLog("")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
