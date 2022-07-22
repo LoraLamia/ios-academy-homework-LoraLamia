@@ -34,11 +34,6 @@ final class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
     
     // MARK: - Actions
     
@@ -61,67 +56,77 @@ final class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = !passwordVisibilityButton.isSelected
     }
     
-    @IBAction func LoginButtonPressed() {
-        guard let emailText = emailTextField.text, let passwordText = passwordTextField.text else { return }
+    @IBAction func loginButtonPressed() {
+        guard
+            let emailText = emailTextField.text,
+            let passwordText = passwordTextField.text,
+            !emailText.isEmpty,
+            !passwordText.isEmpty
+        else {
+            return
+        }
         
-        if !emailText.isEmpty && !passwordText.isEmpty {
-            let parameters: [String: String] = [
-                "email": emailText,
-                "password": passwordText
-            ]
-            
-            MBProgressHUD.showAdded(to: view, animated: true)
+        let parameters: [String: String] = [
+            "email": emailText,
+            "password": passwordText
+        ]
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
 
-            AF.request(
-                "https://tv-shows.infinum.academy/users/sign_in",
-                method: .post,
-                parameters: parameters,
-                encoder: JSONParameterEncoder.default
-            )
-            .validate()
-            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
-                guard let self = self else { return }
-                MBProgressHUD.hide(for: self.view, animated: true)
-                switch dataResponse.result {
-                case .success(let responseUser):
-                    let headers = dataResponse.response?.headers.dictionary ?? [:]
-                    self.handleSuccesCase(responseUser: responseUser, headers: headers)
-                case .failure:
-                    self.handleErrorCase()
-                }
+        AF.request(
+            "https://tv-shows.infinum.academy/users/sign_in",
+            method: .post,
+            parameters: parameters,
+            encoder: JSONParameterEncoder.default
+        )
+        .validate()
+        .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
+            guard let self = self else { return }
+            MBProgressHUD.hide(for: self.view, animated: true)
+            switch dataResponse.result {
+            case .success(let responseUser):
+                let headers = dataResponse.response?.headers.dictionary ?? [:]
+                self.handleSuccesCase(responseUser: responseUser, headers: headers)
+            case .failure:
+                self.handleErrorCase()
             }
         }
     }
     
-    @IBAction func RegisterButtonPressed() {
-        guard let emailText = emailTextField.text, let passwordText = passwordTextField.text else { return }
+    @IBAction func registerButtonPressed() {
+        guard
+            let emailText = emailTextField.text,
+            let passwordText = passwordTextField.text,
+            !emailText.isEmpty,
+            !passwordText.isEmpty
+        else {
+            return
+        }
         
-        if !emailText.isEmpty && !passwordText.isEmpty {
-            let parameters: [String: String] = [
-                "email": emailText,
-                "password": passwordText,
-                "password_confirmation": passwordText
-            ]
+        let parameters: [String: String] = [
+            "email": emailText,
+            "password": passwordText,
+            "password_confirmation": passwordText
+        ]
             
-            MBProgressHUD.showAdded(to: view, animated: true)
+        MBProgressHUD.showAdded(to: view, animated: true)
 
-            AF.request(
-                "https://tv-shows.infinum.academy/users",
-                method: .post,
-                parameters: parameters,
-                encoder: JSONParameterEncoder.default
-            )
-            .validate()
-            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
-                guard let self = self else { return }
-                MBProgressHUD.hide(for: self.view, animated: true)
-                switch dataResponse.result {
-                case .success(let responseUser):
-                    let headers = dataResponse.response?.headers.dictionary ?? [:]
-                    self.handleSuccesCase(responseUser: responseUser, headers: headers)
-                case .failure:
-                    self.handleErrorCase()
-                }
+        AF.request(
+            "https://tv-shows.infinum.academy/users",
+            method: .post,
+            parameters: parameters,
+            encoder: JSONParameterEncoder.default
+        )
+        .validate()
+        .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
+            guard let self = self else { return }
+            MBProgressHUD.hide(for: self.view, animated: true)
+            switch dataResponse.result {
+            case .success(let responseUser):
+                let headers = dataResponse.response?.headers.dictionary ?? [:]
+                self.handleSuccesCase(responseUser: responseUser, headers: headers)
+            case .failure:
+                self.handleErrorCase()
             }
         }
     }
