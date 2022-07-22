@@ -19,13 +19,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title = "Shows"
-        
-        showTableView.delegate = self
-        showTableView.dataSource = self
-        
-        MBProgressHUD.showAdded(to: view, animated: true)
+        startSetUp()
         
         guard let authInfo = authInfo else { return }
         AF.request(
@@ -63,6 +57,15 @@ class HomeViewController: UIViewController {
     
     private func handleErrorCase() {
         print("error")
+    }
+    
+    private func startSetUp() {
+        
+        self.navigationItem.title = "Shows"
+        navigationController?.setViewControllers([self], animated: true)
+        showTableView.delegate = self
+        showTableView.dataSource = self
+        MBProgressHUD.showAdded(to: view, animated: true)
     }
 }
 
