@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A826D2E599009508B30DDA5 /* Pods_TV_Shows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A6C3EC95F8D16433542646 /* Pods_TV_Shows.framework */; };
 		422D2F62288ABD16007E3662 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D2F61288ABD16007E3662 /* Models.swift */; };
+		422D2F64288AE982007E3662 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D2F63288AE982007E3662 /* HomeTableViewCell.swift */; };
 		42766E302875F80A00CF7E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42766E2F2875F80A00CF7E3D /* AppDelegate.swift */; };
 		42766E322875F80A00CF7E3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42766E312875F80A00CF7E3D /* SceneDelegate.swift */; };
 		42766E392875F80C00CF7E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42766E382875F80C00CF7E3D /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		40A6C3EC95F8D16433542646 /* Pods_TV_Shows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Shows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		422D2F61288ABD16007E3662 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		422D2F63288AE982007E3662 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		42766E2C2875F80A00CF7E3D /* TV Shows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Shows.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42766E2F2875F80A00CF7E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42766E312875F80A00CF7E3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				42766E382875F80C00CF7E3D /* Assets.xcassets */,
 				42766E3A2875F80C00CF7E3D /* LaunchScreen.storyboard */,
 				42766E3D2875F80C00CF7E3D /* Info.plist */,
+				422D2F63288AE982007E3662 /* HomeTableViewCell.swift */,
 			);
 			path = "TV Shows";
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422D2F64288AE982007E3662 /* HomeTableViewCell.swift in Sources */,
 				427D03E828784B7200BBA855 /* LoginViewController.swift in Sources */,
 				42766E302875F80A00CF7E3D /* AppDelegate.swift in Sources */,
 				422D2F62288ABD16007E3662 /* Models.swift in Sources */,

@@ -6,7 +6,7 @@ import MBProgressHUD
 
 final class LoginViewController: UIViewController {
     
-    // MARK: Outlets
+    // MARK: - Outlets
     
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var emailTextField: UITextField!
