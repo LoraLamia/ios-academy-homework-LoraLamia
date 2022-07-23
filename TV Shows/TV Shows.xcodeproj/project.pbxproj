@@ -22,6 +22,7 @@
 		42C8369D288BF27600F206E1 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C8369C288BF27600F206E1 /* HomeTableViewCell.swift */; };
 		42C836A0288C680100F206E1 /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C8369F288C680100F206E1 /* ShowDetailsViewController.swift */; };
 		42C836A2288C682200F206E1 /* ShowDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C836A1288C682200F206E1 /* ShowDetails.storyboard */; };
+		42C836A6288C6C8000F206E1 /* ReviewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C836A5288C6C8000F206E1 /* ReviewsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		42C8369C288BF27600F206E1 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		42C8369F288C680100F206E1 /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
 		42C836A1288C682200F206E1 /* ShowDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowDetails.storyboard; sourceTree = "<group>"; };
+		42C836A5288C6C8000F206E1 /* ReviewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsResponse.swift; sourceTree = "<group>"; };
 		578D1EFE1B36AD062C2E8E59 /* Pods-TV Shows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.release.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.release.xcconfig"; sourceTree = "<group>"; };
 		629A790561D4219D40C7211E /* Pods-TV Shows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.debug.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +66,7 @@
 				42C83696288BF1F300F206E1 /* AuthInfo.swift */,
 				42C83698288BF20600F206E1 /* UserResponse.swift */,
 				42C8369A288BF21A00F206E1 /* ShowsResponse.swift */,
+				42C836A5288C6C8000F206E1 /* ReviewsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			files = (
 				42C8369B288BF21A00F206E1 /* ShowsResponse.swift in Sources */,
 				427D03E828784B7200BBA855 /* LoginViewController.swift in Sources */,
+				42C836A6288C6C8000F206E1 /* ReviewsResponse.swift in Sources */,
 				42766E302875F80A00CF7E3D /* AppDelegate.swift in Sources */,
 				42C83699288BF20600F206E1 /* UserResponse.swift in Sources */,
 				42766E322875F80A00CF7E3D /* SceneDelegate.swift in Sources */,
