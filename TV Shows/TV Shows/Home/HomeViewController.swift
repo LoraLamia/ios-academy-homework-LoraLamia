@@ -3,17 +3,17 @@ import UIKit
 import Alamofire
 import MBProgressHUD
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var showTableView: UITableView!
+    @IBOutlet private weak var showTableView: UITableView!
     
     //MARK: - Properties
     
     var user: UserResponse?
     var authInfo: AuthInfo?
-    var showsList: ShowsResponse?
+    private var showsList: [Show] = []
     
     // MARK: - Lifecycle methods
 
@@ -21,26 +21,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setUp()
-        
-        guard let authInfo = authInfo else { return }
-        AF.request(
-              "https://tv-shows.infinum.academy/shows",
-              method: .get,
-              parameters: ["page": "1", "items": "100"], 
-              headers: HTTPHeaders(authInfo.headers)
-          )
-          .validate()
-          .responseDecodable(of: ShowsResponse.self) { [weak self] dataResponse in
-              guard let self = self else { return }
-              MBProgressHUD.hide(for: self.view, animated: true)
-              switch dataResponse.result {
-              case .success(let showsResponse):
-                  self.handleSuccesCase(showsList: showsResponse)
-              case .failure:
-                  self.handleErrorCase()
-                
-              }
-          }
+        fetchShows()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,16 +32,18 @@ class HomeViewController: UIViewController {
     
     //MARK: - Utility methods
     
-    private func handleSuccesCase(showsList: ShowsResponse) {
+    private func handleSuccesCase(showsResponse: ShowsResponse) {
         
-        self.showsList = showsList
+        self.showsList = showsResponse.shows
         showTableView.reloadData()
-        print("succes")
     }
     
     private func handleErrorCase() {
-        
-        print("error")
+        let alert = UIAlertController(title: "Error", message: "Could not fetch data", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in
+        NSLog("")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func setUp() {
@@ -71,21 +54,42 @@ class HomeViewController: UIViewController {
         showTableView.dataSource = self
         MBProgressHUD.showAdded(to: view, animated: true)
     }
+    
+    private func fetchShows() {
+        
+        guard let authInfo = authInfo else { return }
+        AF.request(
+              "https://tv-shows.infinum.academy/shows",
+              method: .get,
+              parameters: ["page": "1", "items": "100"],
+              headers: HTTPHeaders(authInfo.headers)
+          )
+          .validate()
+          .responseDecodable(of: ShowsResponse.self) { [weak self] dataResponse in
+              guard let self = self else { return }
+              MBProgressHUD.hide(for: self.view, animated: true)
+              switch dataResponse.result {
+              case .success(let showsResponse):
+                  self.handleSuccesCase(showsResponse: showsResponse)
+              case .failure:
+                  self.handleErrorCase()
+                
+              }
+          }
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let showsList = showsList else { return 0 }
-        return showsList.shows.count
+        return showsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
-        guard let showsList = showsList else { return UITableViewCell() }
-        let title = showsList.shows[indexPath.row].title
+        let title = showsList[indexPath.row].title
         cell.setShowTitle(text: title)
 
         return cell
