@@ -104,6 +104,12 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        let storyboard = UIStoryboard(name: "ShowDetails", bundle: nil)
+        let showDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
+        showDetailsViewController.authInfo = authInfo
+        showDetailsViewController.showId = showsList[indexPath.row].id
+        showDetailsViewController.show = showsList[indexPath.row]
+        navigationController?.pushViewController(showDetailsViewController, animated: true)
     }
 }
 
