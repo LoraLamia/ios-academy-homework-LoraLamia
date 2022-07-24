@@ -39,8 +39,8 @@ class ShowDetailsViewController: UIViewController {
               switch dataResponse.result {
               case .success(let reviewsResponse):
                   self.handleSuccesCase(reviewsResponse: reviewsResponse)
-              case .failure:
-                  print("error")
+              case .failure(let error):
+                  print("Error : \(error.localizedDescription)")
                 
               }
           }
