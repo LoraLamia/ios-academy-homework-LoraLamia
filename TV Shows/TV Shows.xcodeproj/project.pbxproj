@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A826D2E599009508B30DDA5 /* Pods_TV_Shows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40A6C3EC95F8D16433542646 /* Pods_TV_Shows.framework */; };
+		4228A560288EA51800F5AB30 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228A55F288EA51800F5AB30 /* DescriptionTableViewCell.swift */; };
 		42766E302875F80A00CF7E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42766E2F2875F80A00CF7E3D /* AppDelegate.swift */; };
 		42766E322875F80A00CF7E3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42766E312875F80A00CF7E3D /* SceneDelegate.swift */; };
 		42766E392875F80C00CF7E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42766E382875F80C00CF7E3D /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		40A6C3EC95F8D16433542646 /* Pods_TV_Shows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Shows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4228A55F288EA51800F5AB30 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		42766E2C2875F80A00CF7E3D /* TV Shows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Shows.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42766E2F2875F80A00CF7E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42766E312875F80A00CF7E3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				42C8369F288C680100F206E1 /* ShowDetailsViewController.swift */,
 				42C836A1288C682200F206E1 /* ShowDetails.storyboard */,
+				4228A55F288EA51800F5AB30 /* DescriptionTableViewCell.swift */,
 			);
 			path = ShowDetails;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			files = (
 				42C8369B288BF21A00F206E1 /* ShowsResponse.swift in Sources */,
 				427D03E828784B7200BBA855 /* LoginViewController.swift in Sources */,
+				4228A560288EA51800F5AB30 /* DescriptionTableViewCell.swift in Sources */,
 				42C836A6288C6C8000F206E1 /* ReviewsResponse.swift in Sources */,
 				42766E302875F80A00CF7E3D /* AppDelegate.swift in Sources */,
 				42C83699288BF20600F206E1 /* UserResponse.swift in Sources */,

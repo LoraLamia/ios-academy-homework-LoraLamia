@@ -15,7 +15,7 @@ final class HomeViewController: UIViewController {
     var authInfo: AuthInfo?
     private var showsList: [Show] = []
     
-    // MARK: - Lifecycle methods
+    //MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
