@@ -37,6 +37,11 @@ class ShowDetailsViewController: UIViewController {
     //MARK: - Utility methods
     
     @IBAction private func writeReviewButtonPressed() {
+        let storyboard = UIStoryboard(name: "WriteReview", bundle: nil)
+        let writeReviewViewController = storyboard.instantiateViewController(withIdentifier: "WriteReviewViewController") as! WriteReviewViewController
+        let newNavigationController = UINavigationController(rootViewController: writeReviewViewController)
+        navigationController?.present(newNavigationController, animated: true)
+        
     }
     
     private func fetchReviews() {
