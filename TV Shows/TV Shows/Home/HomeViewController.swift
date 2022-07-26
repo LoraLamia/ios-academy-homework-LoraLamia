@@ -13,14 +13,19 @@ final class HomeViewController: UIViewController {
     
     var user: UserResponse?
     var authInfo: AuthInfo?
-    private var showsList: [Show] = []
+    private var showsList: [Show] = [] {
+        didSet {
+            showTableView.reloadData()
+        }
+    }
     
     // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUp()
+        setupUI()
+        setupTableView()
         fetchShows()
     }
     
@@ -34,23 +39,25 @@ final class HomeViewController: UIViewController {
     
     private func handleSuccesCase(showsResponse: ShowsResponse) {
         
-        self.showsList = showsResponse.shows
-        showTableView.reloadData()
+        showsList = showsResponse.shows
     }
     
     private func handleErrorCase() {
         let alert = UIAlertController(title: "Error", message: "Could not fetch data", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
-    private func setUp() {
+    private func setupUI() {
         
-        self.navigationItem.title = "Shows"
+        navigationItem.title = "Shows"
         navigationController?.setViewControllers([self], animated: true)
+        MBProgressHUD.showAdded(to: view, animated: true)
+    }
+    
+    private func setupTableView() {
         showTableView.delegate = self
         showTableView.dataSource = self
-        MBProgressHUD.showAdded(to: view, animated: true)
     }
     
     private func fetchShows() {
@@ -71,7 +78,6 @@ final class HomeViewController: UIViewController {
                   self.handleSuccesCase(showsResponse: showsResponse)
               case .failure:
                   self.handleErrorCase()
-                
               }
           }
     }
@@ -88,7 +94,8 @@ extension HomeViewController: UITableViewDataSource {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         let title = showsList[indexPath.row].title
-        cell.setShowTitle(text: title)
+        let item = HomeTableViewCellModel(text: title)
+        cell.configure(with: item)
 
         return cell
     }

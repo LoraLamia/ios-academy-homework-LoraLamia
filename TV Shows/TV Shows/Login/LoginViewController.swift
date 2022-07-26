@@ -192,8 +192,8 @@ final class LoginViewController: UIViewController {
     
     private func handleSuccesCase(responseUser: UserResponse, headers: [String: String]) {
         guard let authInfo = try? AuthInfo(headers: headers) else { return }
-        self.user = responseUser
-        self.pushHomeViewController(authInfo: authInfo, responseUser: responseUser)
+        user = responseUser
+        pushHomeViewController(authInfo: authInfo, responseUser: responseUser)
     }
     
     private func handleErrorCase() {
