@@ -13,6 +13,7 @@
 		4228A565288EC80C00F5AB30 /* WriteReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4228A564288EC80C00F5AB30 /* WriteReview.storyboard */; };
 		4228A56C28915AE300F5AB30 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228A56B28915AE300F5AB30 /* RatingView.swift */; };
 		4228A56E28916A2800F5AB30 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228A56D28916A2800F5AB30 /* ReviewTableViewCell.swift */; };
+		4228A567289044D000F5AB30 /* HomeTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228A566289044D000F5AB30 /* HomeTableViewCellModel.swift */; };
 		42766E302875F80A00CF7E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42766E2F2875F80A00CF7E3D /* AppDelegate.swift */; };
 		42766E322875F80A00CF7E3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42766E312875F80A00CF7E3D /* SceneDelegate.swift */; };
 		42766E392875F80C00CF7E3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42766E382875F80C00CF7E3D /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		4228A564288EC80C00F5AB30 /* WriteReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WriteReview.storyboard; sourceTree = "<group>"; };
 		4228A56B28915AE300F5AB30 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4228A56D28916A2800F5AB30 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		4228A566289044D000F5AB30 /* HomeTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCellModel.swift; sourceTree = "<group>"; };
 		42766E2C2875F80A00CF7E3D /* TV Shows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Shows.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42766E2F2875F80A00CF7E3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42766E312875F80A00CF7E3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				4289BAA62886B0AF00588E3E /* HomeViewController.swift */,
 				4289BAA82886B0C300588E3E /* Home.storyboard */,
 				42C8369C288BF27600F206E1 /* HomeTableViewCell.swift */,
+				4228A566289044D000F5AB30 /* HomeTableViewCellModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42C8369B288BF21A00F206E1 /* ShowsResponse.swift in Sources */,
+				4228A567289044D000F5AB30 /* HomeTableViewCellModel.swift in Sources */,
 				427D03E828784B7200BBA855 /* LoginViewController.swift in Sources */,
 				4228A563288EC7FB00F5AB30 /* WriteReviewViewController.swift in Sources */,
 				4228A560288EA51800F5AB30 /* DescriptionTableViewCell.swift in Sources */,
