@@ -7,29 +7,32 @@
 
 import UIKit
 
-class WriteReviewViewController: UIViewController {
+final class WriteReviewViewController: UIViewController {
     
     
     @IBOutlet weak var ratingView: RatingView!
     
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var commentTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        ratingView.configure(withStyle: .small)
-                ratingView.isEnabled = true
-
-        // Do any additional setup after loading the view.
+        setUp()
+    }
+    
+    //SETUP RAZDJELITI
+    
+    private func setUp() {
+        commentTextView.delegate = self
+        commentTextView.text = "Placeholder"
+        commentTextView.textColor = UIColor.lightGray
+        submitButton.layer.cornerRadius = 24
+        submitButton.tintColor = .white
+        submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension WriteReviewViewController: UITextViewDelegate {
+    
 }

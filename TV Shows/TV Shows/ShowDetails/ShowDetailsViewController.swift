@@ -11,8 +11,6 @@ import MBProgressHUD
 
 class ShowDetailsViewController: UIViewController {
     
-    //***Jel showId mora biti optional?
-    
     //MARK: - Outlets
     
     @IBOutlet weak var writeReviewButton: UIButton!
@@ -91,27 +89,36 @@ extension ShowDetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         print("funcija 1 pozvana")
+        print("broj celija: \(reviews.count)")
         
-        return 1
+        return reviews.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        print("f-ja 2 pozvana")
-    
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
-        
-        guard let show = show else {
-            print("there is no show")
-            return UITableViewCell.init() }
-        guard let showDescription = show.description else {
-            print("there is no description")
-            return UITableViewCell.init()
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
+            
+            guard let show = show else {
+                print("there is no show")
+                return UITableViewCell.init() }
+            guard let showDescription = show.description else {
+                print("there is no description")
+                return UITableViewCell.init()
+            }
+            cell.setShowDescription(text: showDescription)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
+            
+            let email = reviews[indexPath.row].user.email
+            let comment = reviews[indexPath.row].comment
+            guard let comment = comment else { return UITableViewCell.init() }
+            cell.configure(text: comment, email: email)
+            
+            return cell
         }
-        cell.setShowDescription(text: showDescription)
         
-
-        return cell
     }
 }
 

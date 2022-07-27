@@ -31,25 +31,53 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nI-56-nYn">
-                                <rect key="frame" x="83" y="306" width="42" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nI-56-nYn">
+                                <rect key="frame" x="20" y="180.5" width="75" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LJJ-S3-qcX">
+                                <rect key="frame" x="20" y="217.5" width="374" height="196"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="196" id="rDN-4k-wjA"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsb-rb-cdS">
+                                <rect key="frame" x="20" y="443.5" width="374" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="i7a-Eq-sc9"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Submit"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="2nI-56-nYn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="0wl-4x-zUV"/>
                             <constraint firstItem="NaZ-uo-IZs" firstAttribute="top" secondItem="O6X-yH-XY9" secondAttribute="bottom" constant="16" id="7JU-21-ded"/>
+                            <constraint firstItem="Tsb-rb-cdS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="83J-6u-Ikr"/>
+                            <constraint firstItem="2nI-56-nYn" firstAttribute="top" secondItem="NaZ-uo-IZs" secondAttribute="bottom" constant="30" id="Mvx-VM-czb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LJJ-S3-qcX" secondAttribute="trailing" constant="20" id="O13-Y2-qRl"/>
                             <constraint firstItem="O6X-yH-XY9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Okp-cg-Owz"/>
                             <constraint firstItem="NaZ-uo-IZs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="TKR-eS-TkU"/>
                             <constraint firstItem="O6X-yH-XY9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="We9-Il-148"/>
+                            <constraint firstItem="LJJ-S3-qcX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="bcp-ex-J9Q"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Tsb-rb-cdS" secondAttribute="trailing" constant="20" id="diO-ay-ga4"/>
+                            <constraint firstItem="Tsb-rb-cdS" firstAttribute="top" secondItem="LJJ-S3-qcX" secondAttribute="bottom" constant="30" id="leh-87-3aD"/>
+                            <constraint firstItem="LJJ-S3-qcX" firstAttribute="top" secondItem="2nI-56-nYn" secondAttribute="bottom" constant="16" id="p0P-u2-r2f"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentTextView" destination="LJJ-S3-qcX" id="wj7-tK-AM5"/>
                         <outlet property="ratingView" destination="NaZ-uo-IZs" id="7g7-kM-Uz8"/>
+                        <outlet property="submitButton" destination="Tsb-rb-cdS" id="wSf-96-Ofg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -58,6 +86,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
