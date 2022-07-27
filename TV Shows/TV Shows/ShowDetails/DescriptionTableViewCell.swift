@@ -13,15 +13,10 @@ class DescriptionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        showDescriptionLabel.text = " "
-    }
-    
-    func setShowDescription(with item: DescriptionTableViewCellModel) {
+    func configure(with item: DescriptionTableViewCellModel) {
+        
         showDescriptionLabel.text = item.description
     }
 }

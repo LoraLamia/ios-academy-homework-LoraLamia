@@ -19,11 +19,8 @@ final class WriteReviewViewController: UIViewController {
         setUp()
     }
     
-    //SETUP RAZDJELITI
-    
     private func setUp() {
-        commentTextView.delegate = self
-        commentTextView.text = "Placeholder"
+
         commentTextView.textColor = UIColor.lightGray
         submitButton.layer.cornerRadius = 24
         submitButton.tintColor = .white

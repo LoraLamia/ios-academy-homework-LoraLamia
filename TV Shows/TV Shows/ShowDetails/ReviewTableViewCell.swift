@@ -11,16 +11,18 @@ final class ReviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var ratingView: RatingView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        ratingView.configure(withStyle: .small)
     }
     
     func configure(with item: ReviewTableViewCellModel) {
         
         reviewLabel.text = item.comment
         emailLabel.text = item.email
+
     }
 
 }

@@ -19,7 +19,7 @@ class ShowDetailsViewController: UIViewController {
     //MARK: - Properties
     
     var authInfo: AuthInfo?
-    var showId: String = ""
+    var showId: String?
     var show: Show?
     var reviews: [Review] = [] {
         didSet {
@@ -32,7 +32,8 @@ class ShowDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUp()
+        setupUI()
+        setupTableView()
         fetchReviews()
     }
     
@@ -47,7 +48,7 @@ class ShowDetailsViewController: UIViewController {
     }
     
     private func fetchReviews() {
-        guard let authInfo = authInfo else { return }
+        guard let authInfo = authInfo, let showId = showId else { return }
         AF.request(
               "https://tv-shows.infinum.academy/shows/\(showId)/reviews",
               method: .get,
@@ -77,15 +78,17 @@ class ShowDetailsViewController: UIViewController {
         print("error")
     }
     
-    private func setUp() {
-        descriptionTableView.delegate = self
-        descriptionTableView.dataSource = self
+    private func setupUI() {
+        
         writeReviewButton.layer.cornerRadius = 24
         writeReviewButton.tintColor = .white
         writeReviewButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
-        
     }
     
+    private func setupTableView() {
+        descriptionTableView.delegate = self
+        descriptionTableView.dataSource = self
+    }
 }
 
 extension ShowDetailsViewController: UITableViewDataSource {
@@ -111,7 +114,7 @@ extension ShowDetailsViewController: UITableViewDataSource {
                 return UITableViewCell.init()
             }
             let item = DescriptionTableViewCellModel(description: showDescription)
-            cell.setShowDescription(with: item)
+            cell.configure(with: item)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
@@ -137,12 +140,7 @@ extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-//        let storyboard = UIStoryboard(name: "ShowDetails", bundle: nil)
-//        let showDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
-//        showDetailsViewController.authInfo = authInfo
-//        showDetailsViewController.showId = showsList[indexPath.row].id
-//        showDetailsViewController.show = showsList[indexPath.row]
-//        navigationController?.pushViewController(showDetailsViewController, animated: true)
+        
     }
 }
 

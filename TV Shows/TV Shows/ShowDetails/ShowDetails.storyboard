@@ -90,24 +90,30 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAI-z6-NOh">
-                                                    <rect key="frame" x="86" y="31" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="86" y="16" width="35.5" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="7LB-Mv-sXN">
-                                                    <rect key="frame" x="20" y="20" width="50" height="50"/>
+                                                    <rect key="frame" x="20" y="16" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="VjS-F6-CJG"/>
                                                         <constraint firstAttribute="width" constant="50" id="jni-69-O7b"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPj-6s-PSR">
-                                                    <rect key="frame" x="40" y="90" width="334" height="28"/>
+                                                    <rect key="frame" x="40" y="86" width="334" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8H-ih-vUg" customClass="RatingView" customModule="TV_Shows" customModuleProvider="target">
+                                                    <rect key="frame" x="86" y="43" width="312" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="R5M-nZ-9HP"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="YPj-6s-PSR" firstAttribute="top" secondItem="7LB-Mv-sXN" secondAttribute="bottom" constant="20" id="5dS-mW-qQx"/>
@@ -115,13 +121,17 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="YPj-6s-PSR" secondAttribute="trailing" constant="20" id="D8d-oy-ID0"/>
                                                 <constraint firstItem="YPj-6s-PSR" firstAttribute="bottom" secondItem="t2j-Kp-IGc" secondAttribute="bottomMargin" id="JLB-lt-rZR"/>
                                                 <constraint firstItem="YPj-6s-PSR" firstAttribute="leading" secondItem="t2j-Kp-IGc" secondAttribute="leadingMargin" constant="20" id="LWs-eL-fiI"/>
-                                                <constraint firstItem="MAI-z6-NOh" firstAttribute="top" secondItem="t2j-Kp-IGc" secondAttribute="topMargin" constant="20" id="ZWX-NL-38j"/>
-                                                <constraint firstItem="7LB-Mv-sXN" firstAttribute="top" secondItem="t2j-Kp-IGc" secondAttribute="top" constant="20" id="ah1-87-Hjp"/>
+                                                <constraint firstAttribute="trailing" secondItem="c8H-ih-vUg" secondAttribute="trailing" constant="16" id="aBx-Nc-I5c"/>
+                                                <constraint firstItem="7LB-Mv-sXN" firstAttribute="top" secondItem="t2j-Kp-IGc" secondAttribute="top" constant="16" id="ah1-87-Hjp"/>
                                                 <constraint firstItem="MAI-z6-NOh" firstAttribute="leading" secondItem="7LB-Mv-sXN" secondAttribute="trailing" constant="16" id="dsl-Ji-Bv2"/>
+                                                <constraint firstItem="MAI-z6-NOh" firstAttribute="top" secondItem="t2j-Kp-IGc" secondAttribute="top" constant="16" id="liH-ti-2sF"/>
+                                                <constraint firstItem="c8H-ih-vUg" firstAttribute="top" secondItem="MAI-z6-NOh" secondAttribute="bottom" constant="10" id="uIm-Fm-9TR"/>
+                                                <constraint firstItem="c8H-ih-vUg" firstAttribute="leading" secondItem="7LB-Mv-sXN" secondAttribute="trailing" constant="16" id="vkh-8a-dba"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="emailLabel" destination="MAI-z6-NOh" id="Cjm-ym-OIP"/>
+                                            <outlet property="ratingView" destination="c8H-ih-vUg" id="YQO-MZ-C28"/>
                                             <outlet property="reviewLabel" destination="YPj-6s-PSR" id="LuB-4U-VKu"/>
                                         </connections>
                                     </tableViewCell>
