@@ -6,7 +6,7 @@ import MBProgressHUD
 
 final class LoginViewController: UIViewController {
     
-    // MARK: Outlets
+    // MARK: - Outlets
     
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var emailTextField: UITextField!
@@ -182,20 +182,24 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func pushHomeViewController() {
+    private func pushHomeViewController(authInfo: AuthInfo, responseUser: UserResponse) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        homeViewController.authInfo = authInfo
+        homeViewController.user = responseUser
         navigationController?.pushViewController(homeViewController, animated: true)
     }
     
     private func handleSuccesCase(responseUser: UserResponse, headers: [String: String]) {
-         print(headers)
-         self.user = responseUser
-         self.pushHomeViewController()
+        guard let authInfo = try? AuthInfo(headers: headers) else { return }
+        user = responseUser
+        pushHomeViewController(authInfo: authInfo, responseUser: responseUser)
     }
     
     private func handleErrorCase() {
-        print("error")
+        let alert = UIAlertController(title: "Error", message: "Incorrect input", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
