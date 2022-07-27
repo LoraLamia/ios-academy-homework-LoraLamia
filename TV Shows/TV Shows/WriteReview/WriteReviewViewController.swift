@@ -11,7 +11,6 @@ final class WriteReviewViewController: UIViewController {
     
     
     @IBOutlet weak var ratingView: RatingView!
-    
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var commentTextView: UITextView!
     override func viewDidLoad() {

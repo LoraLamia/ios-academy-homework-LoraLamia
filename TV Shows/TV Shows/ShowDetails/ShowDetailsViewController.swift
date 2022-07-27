@@ -95,25 +95,17 @@ extension ShowDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("funcija 1 pozvana")
-        print("broj celija: \(reviews.count)")
-        
         return reviews.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        guard let show = show else { return UITableViewCell.init() }
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
             
-            guard let show = show else {
-                print("there is no show")
-                return UITableViewCell.init() }
-            guard let showDescription = show.description else {
-                print("there is no description")
-                return UITableViewCell.init()
-            }
-            let item = DescriptionTableViewCellModel(description: showDescription)
+            let item = DescriptionTableViewCellModel(description: show.description)
             cell.configure(with: item)
             return cell
         } else {

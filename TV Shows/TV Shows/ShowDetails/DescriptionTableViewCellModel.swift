@@ -8,5 +8,5 @@
 import Foundation
 
 struct DescriptionTableViewCellModel {
-    let description: String
+    let description: String?
 }
