@@ -13,7 +13,11 @@ final class HomeViewController: UIViewController {
     
     var user: UserResponse?
     var authInfo: AuthInfo?
-    private var showsList: [Show] = []
+    private var showsList: [Show] = [] {
+        didSet {
+            showTableView.reloadData()
+        }
+    }
     
     //MARK: - Lifecycle methods
 

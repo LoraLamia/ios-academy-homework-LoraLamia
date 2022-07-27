@@ -21,7 +21,11 @@ class ShowDetailsViewController: UIViewController {
     var authInfo: AuthInfo?
     var showId: String = ""
     var show: Show?
-    var reviews: [Review] = []
+    var reviews: [Review] = [] {
+        didSet {
+            descriptionTableView.reloadData()
+        }
+    }
     
     //MARK: - Lifecycle methods
 
@@ -111,8 +115,8 @@ extension ShowDetailsViewController: UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
             
-            let email = reviews[indexPath.row].user.email
-            let comment = reviews[indexPath.row].comment
+            let email = reviews[indexPath.row - 1].user.email
+            let comment = reviews[indexPath.row - 1].comment
             guard let comment = comment else { return UITableViewCell.init() }
             cell.configure(text: comment, email: email)
             
