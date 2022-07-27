@@ -50,7 +50,7 @@ final class HomeViewController: UIViewController {
     
     private func setupUI() {
         
-        navigationItem.title = "Shows"
+        title = "Shows"
         navigationController?.setViewControllers([self], animated: true)
         MBProgressHUD.showAdded(to: view, animated: true)
     }
