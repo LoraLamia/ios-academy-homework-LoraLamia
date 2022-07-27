@@ -16,13 +16,45 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NaZ-uo-IZs" customClass="RatingView" customModule="TV_Shows" customModuleProvider="target">
+                                <rect key="frame" x="18" y="110.5" width="340" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="340" id="Bh1-5g-e2o"/>
+                                    <constraint firstAttribute="height" constant="40" id="Ooo-hN-tRW"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6X-yH-XY9">
+                                <rect key="frame" x="20" y="74" width="49" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nI-56-nYn">
+                                <rect key="frame" x="83" y="306" width="42" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NaZ-uo-IZs" firstAttribute="top" secondItem="O6X-yH-XY9" secondAttribute="bottom" constant="16" id="7JU-21-ded"/>
+                            <constraint firstItem="O6X-yH-XY9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Okp-cg-Owz"/>
+                            <constraint firstItem="NaZ-uo-IZs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="TKR-eS-TkU"/>
+                            <constraint firstItem="O6X-yH-XY9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="We9-Il-148"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ratingView" destination="NaZ-uo-IZs" id="7g7-kM-Uz8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="62"/>
+            <point key="canvasLocation" x="18.840579710144929" y="61.607142857142854"/>
         </scene>
     </scenes>
     <resources>

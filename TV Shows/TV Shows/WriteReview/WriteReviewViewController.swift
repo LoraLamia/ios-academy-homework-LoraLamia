@@ -8,9 +8,15 @@
 import UIKit
 
 class WriteReviewViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var ratingView: RatingView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        ratingView.configure(withStyle: .small)
+                ratingView.isEnabled = true
 
         // Do any additional setup after loading the view.
     }
