@@ -17,12 +17,10 @@ final class ReviewTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    //TU ONE GLUPE STRUKTURE
-    
-    func configure(text: String, email: String) {
+    func configure(with item: ReviewTableViewCellModel) {
         
-        reviewLabel.text = text
-        emailLabel.text = email
+        reviewLabel.text = item.comment
+        emailLabel.text = item.email
     }
 
 }

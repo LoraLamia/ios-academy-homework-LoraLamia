@@ -21,7 +21,7 @@ class DescriptionTableViewCell: UITableViewCell {
         showDescriptionLabel.text = " "
     }
     
-    func setShowDescription(text: String) {
-        showDescriptionLabel.text = text
+    func setShowDescription(with item: DescriptionTableViewCellModel) {
+        showDescriptionLabel.text = item.description
     }
 }

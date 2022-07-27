@@ -110,15 +110,16 @@ extension ShowDetailsViewController: UITableViewDataSource {
                 print("there is no description")
                 return UITableViewCell.init()
             }
-            cell.setShowDescription(text: showDescription)
+            let item = DescriptionTableViewCellModel(description: showDescription)
+            cell.setShowDescription(with: item)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
             
             let email = reviews[indexPath.row - 1].user.email
             let comment = reviews[indexPath.row - 1].comment
-            guard let comment = comment else { return UITableViewCell.init() }
-            cell.configure(text: comment, email: email)
+            let item = ReviewTableViewCellModel(comment: comment, email: email)
+            cell.configure(with: item)
             
             return cell
         }
