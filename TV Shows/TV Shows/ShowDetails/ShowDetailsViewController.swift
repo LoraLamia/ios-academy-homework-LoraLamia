@@ -11,12 +11,12 @@ import MBProgressHUD
 
 final class ShowDetailsViewController: UIViewController {
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     @IBOutlet private weak var writeReviewButton: UIButton!
     @IBOutlet private weak var descriptionTableView: UITableView!
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     var authInfo: AuthInfo?
     var showId: Int?
@@ -27,7 +27,7 @@ final class ShowDetailsViewController: UIViewController {
         }
     }
     
-    //MARK: - Lifecycle methods
+    // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ final class ShowDetailsViewController: UIViewController {
         fetchReviews()
     }
 
-    //MARK: - Utility methods
+    // MARK: - Actions
     
     @IBAction private func writeReviewButtonPressed() {
         let storyboard = UIStoryboard(name: "WriteReview", bundle: nil)
@@ -49,6 +49,8 @@ final class ShowDetailsViewController: UIViewController {
         navigationController?.present(newNavigationController, animated: true)
         
     }
+    
+    // MARK: - Utility methods
     
     private func fetchReviews() {
         guard let authInfo = authInfo, let showId = showId else { return }

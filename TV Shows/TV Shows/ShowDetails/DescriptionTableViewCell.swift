@@ -8,10 +8,14 @@
 import UIKit
 
 final class DescriptionTableViewCell: UITableViewCell {
+    
+    // MARK: - Outlets
 
     @IBOutlet private weak var reviewInfoLabel: UILabel!
     @IBOutlet private weak var showDescriptionLabel: UILabel!
     @IBOutlet private weak var ratingView: RatingView!
+    
+    // MARK: - Lifecycle methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +23,8 @@ final class DescriptionTableViewCell: UITableViewCell {
         ratingView.isEnabled = false
         
     }
+    
+    // MARK: - Utility methods
     
     func configure(with item: DescriptionTableViewCellModel) {
         

@@ -15,51 +15,26 @@ protocol WriteReviewViewControllerDelegate: AnyObject {
 
 final class WriteReviewViewController: UIViewController {
     
-    // MARK: Outlets
+    // MARK: - Outlets
     
     @IBOutlet private weak var ratingView: RatingView!
     @IBOutlet private weak var submitButton: UIButton!
     @IBOutlet private weak var commentTextView: UITextView!
     
+    // MARK: - Properties
+    
     weak var delegate: WriteReviewViewControllerDelegate?
     var authInfo: AuthInfo?
     var showId: Int?
+    
+    // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
     }
     
-    private func setUp() {
-        
-        ratingView.delegate = self
-        submitButton.isEnabled = false
-        submitButton.layer.cornerRadius = 24
-        submitButton.setTitleColor(.white, for: .disabled)
-        submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 0.5)
-
-        title = "Write a Review"
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closePressed(_:)))
-        navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
-        commentTextView.clipsToBounds = true;
-        commentTextView.layer.cornerRadius = 10;
-    }
-    
-    private func handleSuccessCase(reviewResponse: ReviewResponse) {
-        delegate?.addReview(reviewResponse.review)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    private func handleErrorCase() {
-        let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    // MARK: Actions
-    
+    // MARK: - Actions
     
     @IBAction func submitReviewButton() {
         
@@ -90,6 +65,36 @@ final class WriteReviewViewController: UIViewController {
           }
     }
     
+    // MARK: - Utility methods
+    
+    private func setUp() {
+        
+        ratingView.delegate = self
+        submitButton.isEnabled = false
+        submitButton.layer.cornerRadius = 24
+        submitButton.setTitleColor(.white, for: .disabled)
+        submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 0.5)
+
+        title = "Write a Review"
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closePressed(_:)))
+        navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        commentTextView.clipsToBounds = true;
+        commentTextView.layer.cornerRadius = 10;
+    }
+    
+    private func handleSuccessCase(reviewResponse: ReviewResponse) {
+        delegate?.addReview(reviewResponse.review)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func handleErrorCase() {
+        let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - Action handlers
@@ -101,6 +106,8 @@ private extension WriteReviewViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: - Delegates
 
 extension WriteReviewViewController: RatingViewDelegate {
     func didChangeRating(_ rating: Int) {

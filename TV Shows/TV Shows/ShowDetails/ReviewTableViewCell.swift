@@ -8,16 +8,22 @@
 import UIKit
 
 final class ReviewTableViewCell: UITableViewCell {
+    
+    // MARK: - Outlets
 
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var ratingView: RatingView!
+    
+    // MARK: - Lifecycle methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
         ratingView.configure(withStyle: .small)
         ratingView.isEnabled = false
     }
+    
+    // MARK: - Utility methods
     
     func configure(with item: ReviewTableViewCellModel) {
         

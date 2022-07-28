@@ -5,11 +5,11 @@ import MBProgressHUD
 
 final class HomeViewController: UIViewController {
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     @IBOutlet private weak var showTableView: UITableView!
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     var user: UserResponse?
     var authInfo: AuthInfo?
@@ -19,7 +19,7 @@ final class HomeViewController: UIViewController {
         }
     }
     
-    //MARK: - Lifecycle methods
+    // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ final class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    //MARK: - Utility methods
+    // MARK: - Utility methods
     
     private func handleSuccesCase(showsResponse: ShowsResponse) {
         
