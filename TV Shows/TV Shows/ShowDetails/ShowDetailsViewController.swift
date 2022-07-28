@@ -21,7 +21,8 @@ final class ShowDetailsViewController: UIViewController {
     var authInfo: AuthInfo?
     var showId: Int?
     var show: Show?
-    var reviews: [Review] = [] {
+    
+    private var reviews: [Review] = [] {
         didSet {
             descriptionTableView.reloadData()
         }
@@ -40,6 +41,7 @@ final class ShowDetailsViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction private func writeReviewButtonPressed() {
+        
         let storyboard = UIStoryboard(name: "WriteReview", bundle: nil)
         let writeReviewViewController = storyboard.instantiateViewController(withIdentifier: "WriteReviewViewController") as! WriteReviewViewController
         writeReviewViewController.authInfo = authInfo
@@ -47,7 +49,6 @@ final class ShowDetailsViewController: UIViewController {
         writeReviewViewController.delegate = self
         let newNavigationController = UINavigationController(rootViewController: writeReviewViewController)
         navigationController?.present(newNavigationController, animated: true)
-        
     }
     
     // MARK: - Utility methods
@@ -69,7 +70,6 @@ final class ShowDetailsViewController: UIViewController {
                   self.handleSuccesCase(reviewsResponse: reviewsResponse)
               case .failure(let error):
                   print("Error : \(error.localizedDescription)")
-                
               }
           }
     }
@@ -78,20 +78,16 @@ final class ShowDetailsViewController: UIViewController {
         reviews = reviewsResponse.reviews
     }
     
-    private func handleErrorCase() {
-    }
-    
     private func setupUI() {
         
         writeReviewButton.layer.cornerRadius = 24
         writeReviewButton.tintColor = .white
         writeReviewButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
-        navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
         title = show?.title
     }
     
     private func setupTableView() {
+        
         descriptionTableView.delegate = self
         descriptionTableView.dataSource = self
     }
@@ -128,7 +124,6 @@ extension ShowDetailsViewController: UITableViewDataSource {
             
             return cell
         }
-        
     }
 }
 

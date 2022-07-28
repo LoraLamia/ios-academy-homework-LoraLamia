@@ -31,7 +31,9 @@ final class WriteReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUp()
+        
+        setupUI()
+        setupNavigationBar()
     }
     
     // MARK: - Actions
@@ -67,21 +69,22 @@ final class WriteReviewViewController: UIViewController {
     
     // MARK: - Utility methods
     
-    private func setUp() {
+    private func setupUI() {
         
         ratingView.delegate = self
         submitButton.isEnabled = false
         submitButton.layer.cornerRadius = 24
         submitButton.setTitleColor(.white, for: .disabled)
         submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 0.5)
-
-        title = "Write a Review"
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closePressed(_:)))
-        navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
         commentTextView.clipsToBounds = true;
         commentTextView.layer.cornerRadius = 10;
+    }
+    
+    private func setupNavigationBar() {
+        title = "Write a Review"
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
+        navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closePressed(_:)))
     }
     
     private func handleSuccessCase(reviewResponse: ReviewResponse) {
@@ -92,7 +95,7 @@ final class WriteReviewViewController: UIViewController {
     private func handleErrorCase() {
         let alert = UIAlertController(title: "Error", message: "Something went wrong", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
 }

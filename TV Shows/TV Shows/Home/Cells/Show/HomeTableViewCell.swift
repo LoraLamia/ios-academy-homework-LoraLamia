@@ -13,13 +13,16 @@ final class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var showTitleLabel: UILabel!
     
-    // MARK: - Lifecycle
+    // MARK: - Lifecycle methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
+    // MARK: - Utility methods
+    
     func configure(with item: HomeTableViewCellModel) {
+        
         showTitleLabel.text = item.text
     }
 }

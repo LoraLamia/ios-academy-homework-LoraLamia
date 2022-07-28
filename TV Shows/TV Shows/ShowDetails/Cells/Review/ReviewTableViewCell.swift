@@ -30,7 +30,5 @@ final class ReviewTableViewCell: UITableViewCell {
         reviewLabel.text = item.comment
         emailLabel.text = item.email
         ratingView.rating = item.rating
-
     }
-
 }

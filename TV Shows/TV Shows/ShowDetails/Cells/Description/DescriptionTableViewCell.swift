@@ -21,7 +21,6 @@ final class DescriptionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         ratingView.configure(withStyle: .small)
         ratingView.isEnabled = false
-        
     }
     
     // MARK: - Utility methods
@@ -31,6 +30,5 @@ final class DescriptionTableViewCell: UITableViewCell {
         showDescriptionLabel.text = item.description
         ratingView.setRoundedRating(item.averageRating ?? 0)
         reviewInfoLabel.text = "\(item.numberOfReviews ?? 0) REVIEWS, \(item.averageRating ?? 0) AVERAGE"
-        
     }
 }
