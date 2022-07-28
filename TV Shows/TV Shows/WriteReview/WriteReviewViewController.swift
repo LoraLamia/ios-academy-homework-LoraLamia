@@ -32,6 +32,8 @@ final class WriteReviewViewController: UIViewController {
     
     private func setUp() {
         
+        ratingView.delegate = self
+        submitButton.isEnabled = false
         submitButton.layer.cornerRadius = 24
         submitButton.tintColor = .white
         submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
@@ -94,5 +96,11 @@ private extension WriteReviewViewController {
     @objc
     func closePressed(_ button: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension WriteReviewViewController: RatingViewDelegate {
+    func didChangeRating(_ rating: Int) {
+        submitButton.isEnabled = true
     }
 }

@@ -148,8 +148,6 @@ extension ShowDetailsViewController: WriteReviewViewControllerDelegate {
 
     func addReview(_ newReview: Review) {
         
-        print("Bla Bla")
-        
         reviews.append(newReview)
     }
 }
