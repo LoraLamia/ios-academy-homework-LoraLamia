@@ -120,12 +120,24 @@ private extension RatingView {
     }
 
     func setRating(_ rating: Int) {
-        // TODO: Your code goes here
+        
+        for index in 0..<ratingButtons.count {
+            if index < rating {
+                ratingButtons[index].isSelected = true
+            } else {
+                ratingButtons[index].isSelected = false
+            }
+        }
     }
 
     func currentSelectedRating() -> Int {
-        // TODO: Your code goes here
-        return 1
+        
+        for index in 0..<ratingButtons.count {
+            if ratingButtons[index].isSelected == false {
+                return index + 1
+            }
+        }
+        return 5
     }
 }
 
@@ -139,8 +151,7 @@ private extension RatingView {
         else {
             return
         }
-        // TODO: Enter the correct index for the rating
-        //setRating(/* correct value */)
+        setRating(buttonIndex + 1)
         delegate?.didChangeRating(rating)
     }
 }
