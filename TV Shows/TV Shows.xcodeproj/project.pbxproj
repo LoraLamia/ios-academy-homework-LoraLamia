@@ -107,6 +107,50 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		422F63502892F9270020B03D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				422F63532892F9730020B03D /* Description */,
+				422F63522892F95E0020B03D /* Review */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		422F63512892F93F0020B03D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				422F63542892F9960020B03D /* Show */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		422F63522892F95E0020B03D /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				425FFE0A2891B342000CD73F /* ReviewTableViewCellModel.swift */,
+				4228A56D28916A2800F5AB30 /* ReviewTableViewCell.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		422F63532892F9730020B03D /* Description */ = {
+			isa = PBXGroup;
+			children = (
+				4228A55F288EA51800F5AB30 /* DescriptionTableViewCell.swift */,
+				425FFE082891B291000CD73F /* DescriptionTableViewCellModel.swift */,
+			);
+			path = Description;
+			sourceTree = "<group>";
+		};
+		422F63542892F9960020B03D /* Show */ = {
+			isa = PBXGroup;
+			children = (
+				4228A566289044D000F5AB30 /* HomeTableViewCellModel.swift */,
+				42C8369C288BF27600F206E1 /* HomeTableViewCell.swift */,
+			);
+			path = Show;
+			sourceTree = "<group>";
+		};
 		42766E232875F80A00CF7E3D = {
 			isa = PBXGroup;
 			children = (
@@ -155,10 +199,9 @@
 		4289BAA52886B06E00588E3E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				422F63512892F93F0020B03D /* Cells */,
 				4289BAA62886B0AF00588E3E /* HomeViewController.swift */,
 				4289BAA82886B0C300588E3E /* Home.storyboard */,
-				42C8369C288BF27600F206E1 /* HomeTableViewCell.swift */,
-				4228A566289044D000F5AB30 /* HomeTableViewCellModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -166,12 +209,9 @@
 		42C8369E288C67CB00F206E1 /* ShowDetails */ = {
 			isa = PBXGroup;
 			children = (
+				422F63502892F9270020B03D /* Cells */,
 				42C8369F288C680100F206E1 /* ShowDetailsViewController.swift */,
 				42C836A1288C682200F206E1 /* ShowDetails.storyboard */,
-				4228A55F288EA51800F5AB30 /* DescriptionTableViewCell.swift */,
-				4228A56D28916A2800F5AB30 /* ReviewTableViewCell.swift */,
-				425FFE082891B291000CD73F /* DescriptionTableViewCellModel.swift */,
-				425FFE0A2891B342000CD73F /* ReviewTableViewCellModel.swift */,
 			);
 			path = ShowDetails;
 			sourceTree = "<group>";
