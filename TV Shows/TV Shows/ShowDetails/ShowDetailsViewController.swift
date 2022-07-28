@@ -90,6 +90,7 @@ final class ShowDetailsViewController: UIViewController {
         
         descriptionTableView.delegate = self
         descriptionTableView.dataSource = self
+        descriptionTableView.allowsSelection = false
     }
 }
 
