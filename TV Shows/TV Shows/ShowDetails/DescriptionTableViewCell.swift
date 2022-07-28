@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DescriptionTableViewCell: UITableViewCell {
+final class DescriptionTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var reviewInfoLabel: UILabel!
     @IBOutlet private weak var showDescriptionLabel: UILabel!

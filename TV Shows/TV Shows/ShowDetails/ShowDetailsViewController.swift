@@ -9,17 +9,17 @@ import UIKit
 import Alamofire
 import MBProgressHUD
 
-class ShowDetailsViewController: UIViewController {
+final class ShowDetailsViewController: UIViewController {
     
     //MARK: - Outlets
     
-    @IBOutlet weak var writeReviewButton: UIButton!
+    @IBOutlet private weak var writeReviewButton: UIButton!
     @IBOutlet private weak var descriptionTableView: UITableView!
     
     //MARK: - Properties
     
     var authInfo: AuthInfo?
-    var showId: String?
+    var showId: Int?
     var show: Show?
     var reviews: [Review] = [] {
         didSet {
@@ -36,12 +36,15 @@ class ShowDetailsViewController: UIViewController {
         setupTableView()
         fetchReviews()
     }
-    
+
     //MARK: - Utility methods
     
     @IBAction private func writeReviewButtonPressed() {
         let storyboard = UIStoryboard(name: "WriteReview", bundle: nil)
         let writeReviewViewController = storyboard.instantiateViewController(withIdentifier: "WriteReviewViewController") as! WriteReviewViewController
+        writeReviewViewController.authInfo = authInfo
+        writeReviewViewController.showId = showId
+        writeReviewViewController.delegate = self
         let newNavigationController = UINavigationController(rootViewController: writeReviewViewController)
         navigationController?.present(newNavigationController, animated: true)
         
@@ -71,11 +74,9 @@ class ShowDetailsViewController: UIViewController {
     
     private func handleSuccesCase(reviewsResponse: ReviewsResponse) {
         reviews = reviewsResponse.reviews
-        print("succes")
     }
     
     private func handleErrorCase() {
-        print("error")
     }
     
     private func setupUI() {
@@ -85,6 +86,7 @@ class ShowDetailsViewController: UIViewController {
         writeReviewButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
         navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
+        title = show?.title
     }
     
     private func setupTableView() {
@@ -139,6 +141,16 @@ extension ShowDetailsViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+    }
+}
+
+extension ShowDetailsViewController: WriteReviewViewControllerDelegate {
+
+    func addReview(_ newReview: Review) {
+        
+        print("Bla Bla")
+        
+        reviews.append(newReview)
     }
 }
 

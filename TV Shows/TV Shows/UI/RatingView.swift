@@ -134,7 +134,7 @@ private extension RatingView {
         
         for index in 0..<ratingButtons.count {
             if ratingButtons[index].isSelected == false {
-                return index + 1
+                return index 
             }
         }
         return 5
