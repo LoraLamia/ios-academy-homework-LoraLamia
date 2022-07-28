@@ -10,4 +10,5 @@ import Foundation
 struct DescriptionTableViewCellModel {
     let description: String?
     let averageRating: Double?
+    let numberOfReviews: Int?
 }

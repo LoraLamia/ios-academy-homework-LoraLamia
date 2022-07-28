@@ -24,6 +24,7 @@ class DescriptionTableViewCell: UITableViewCell {
         
         showDescriptionLabel.text = item.description
         ratingView.setRoundedRating(item.averageRating ?? 0)
+        reviewInfoLabel.text = "\(item.numberOfReviews ?? 0) REVIEWS, \(item.averageRating ?? 0) AVERAGE"
         
     }
 }

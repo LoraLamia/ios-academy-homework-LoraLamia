@@ -83,6 +83,8 @@ class ShowDetailsViewController: UIViewController {
         writeReviewButton.layer.cornerRadius = 24
         writeReviewButton.tintColor = .white
         writeReviewButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
     }
     
     private func setupTableView() {
@@ -106,7 +108,8 @@ extension ShowDetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
             
             let item = DescriptionTableViewCellModel(description: show.description,
-                                                     averageRating: show.averageRating)
+                                                     averageRating: show.averageRating,
+                                                     numberOfReviews: reviews.count)
             cell.configure(with: item)
             
             return cell
