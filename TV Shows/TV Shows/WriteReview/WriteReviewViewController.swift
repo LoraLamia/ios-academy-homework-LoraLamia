@@ -35,13 +35,16 @@ final class WriteReviewViewController: UIViewController {
         ratingView.delegate = self
         submitButton.isEnabled = false
         submitButton.layer.cornerRadius = 24
-        submitButton.tintColor = .white
-        submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        submitButton.setTitleColor(.white, for: .disabled)
+        submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 0.5)
+
         title = "Write a Review"
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closePressed(_:)))
         navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        commentTextView.clipsToBounds = true;
+        commentTextView.layer.cornerRadius = 10;
     }
     
     private func handleSuccessCase(reviewResponse: ReviewResponse) {
@@ -102,5 +105,7 @@ private extension WriteReviewViewController {
 extension WriteReviewViewController: RatingViewDelegate {
     func didChangeRating(_ rating: Int) {
         submitButton.isEnabled = true
+        submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        submitButton.tintColor = .white
     }
 }
