@@ -105,15 +105,18 @@ extension ShowDetailsViewController: UITableViewDataSource {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
             
-            let item = DescriptionTableViewCellModel(description: show.description)
+            let item = DescriptionTableViewCellModel(description: show.description,
+                                                     averageRating: show.averageRating)
             cell.configure(with: item)
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
             
-            let email = reviews[indexPath.row - 1].user.email
-            let comment = reviews[indexPath.row - 1].comment
-            let item = ReviewTableViewCellModel(comment: comment, email: email)
+            let review = reviews[indexPath.row - 1]
+            let item = ReviewTableViewCellModel(comment: review.comment,
+                                                email: review.user.email,
+                                                rating: review.rating)
             cell.configure(with: item)
             
             return cell

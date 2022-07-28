@@ -49,11 +49,11 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vz-Md-zKP">
                                                     <rect key="frame" x="20" y="340.5" width="374" height="69.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aBL-Zz-tK2" customClass="RatingView" customModule="TV_Shows" customModuleProvider="target">
-                                                    <rect key="frame" x="40" y="420" width="354" height="40"/>
+                                                    <rect key="frame" x="20" y="420" width="374" height="40"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="bHI-rO-bKb"/>
@@ -71,14 +71,16 @@
                                                 <constraint firstItem="0dP-oK-5SZ" firstAttribute="leading" secondItem="qNZ-zn-ZJb" secondAttribute="leading" constant="20" id="Ucq-Xx-eU3"/>
                                                 <constraint firstItem="5vz-Md-zKP" firstAttribute="leading" secondItem="qNZ-zn-ZJb" secondAttribute="leading" constant="20" id="dy7-fZ-H7K"/>
                                                 <constraint firstItem="aBL-Zz-tK2" firstAttribute="top" secondItem="5vz-Md-zKP" secondAttribute="bottom" constant="10" id="eSR-OB-psl"/>
-                                                <constraint firstItem="aBL-Zz-tK2" firstAttribute="leading" secondItem="qNZ-zn-ZJb" secondAttribute="leadingMargin" constant="20" id="g5D-2b-9c1"/>
                                                 <constraint firstItem="cHH-hC-y1i" firstAttribute="top" secondItem="AH1-AS-Z31" secondAttribute="bottom" constant="20" id="gSk-RL-jRd"/>
                                                 <constraint firstAttribute="trailing" secondItem="AH1-AS-Z31" secondAttribute="trailing" constant="20" id="hHg-Nh-mTF"/>
+                                                <constraint firstItem="aBL-Zz-tK2" firstAttribute="leading" secondItem="qNZ-zn-ZJb" secondAttribute="leading" constant="20" id="o1b-0W-fNS"/>
                                                 <constraint firstItem="AH1-AS-Z31" firstAttribute="leading" secondItem="qNZ-zn-ZJb" secondAttribute="leading" constant="20" id="t8w-sA-ESq"/>
                                                 <constraint firstAttribute="trailing" secondItem="0dP-oK-5SZ" secondAttribute="trailing" constant="20" id="tce-b7-7sP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="ratingView" destination="aBL-Zz-tK2" id="mPW-43-v25"/>
+                                            <outlet property="reviewInfoLabel" destination="5vz-Md-zKP" id="oBl-6b-ddl"/>
                                             <outlet property="showDescriptionLabel" destination="AH1-AS-Z31" id="JC7-kl-nqy"/>
                                         </connections>
                                     </tableViewCell>
