@@ -51,8 +51,11 @@ final class HomeViewController: UIViewController {
     private func setupUI() {
         
         title = "Shows"
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.setViewControllers([self], animated: true)
         MBProgressHUD.showAdded(to: view, animated: true)
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
     }
     
     private func setupTableView() {

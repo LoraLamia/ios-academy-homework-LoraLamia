@@ -37,11 +37,13 @@ final class WriteReviewViewController: UIViewController {
         submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
         title = "Write a Review"
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closePressed(_:)))
+        navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
     }
     
     private func handleSuccessCase(reviewResponse: ReviewResponse) {
         delegate?.addReview(reviewResponse.review)
-        navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -85,3 +87,12 @@ final class WriteReviewViewController: UIViewController {
     
 }
 
+// MARK: - Action handlers
+
+private extension WriteReviewViewController {
+
+    @objc
+    func closePressed(_ button: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+}
