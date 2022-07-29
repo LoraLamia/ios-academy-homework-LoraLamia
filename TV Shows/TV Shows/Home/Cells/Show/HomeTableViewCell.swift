@@ -31,5 +31,11 @@ final class HomeTableViewCell: UITableViewCell {
             with: url,
             placeholder: UIImage(named: "ic-show-placeholder-vertical")
         )
+        
+        self.iconImageView.alpha = 0
+        UIView.animate(withDuration: 1) { [weak self] in
+            guard let self = self else { return }
+            self.iconImageView.alpha = 1
+        }
     }
 }
