@@ -197,9 +197,10 @@ final class LoginViewController: UIViewController {
     }
     
     private func handleErrorCase() {
-        let alert = UIAlertController(title: "Error", message: "Incorrect input", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
-        self.present(alert, animated: true, completion: nil)
+        UIView.animate(withDuration: 0.7, animations: { self.loginButton.transform = CGAffineTransform.identity.scaledBy(x: 0.7, y: 0.7) }, completion: { (finish) in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.loginButton.transform = CGAffineTransform.identity
+            })
+        })
     }
-    
 }
