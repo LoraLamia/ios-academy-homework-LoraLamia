@@ -205,6 +205,8 @@ final class LoginViewController: UIViewController {
     }
     
     private func handleRegisterErrorCase() {
-        
+        let alert = UIAlertController(title: "Error", message: "Incorrect input", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
 }
