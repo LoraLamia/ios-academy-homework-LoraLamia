@@ -11,9 +11,9 @@ final class ReviewTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
 
-    @IBOutlet weak var reviewLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var ratingView: RatingView!
+    @IBOutlet private weak var reviewLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var ratingView: RatingView!
     
     // MARK: - Lifecycle methods
     
@@ -25,10 +25,10 @@ final class ReviewTableViewCell: UITableViewCell {
     
     // MARK: - Utility methods
     
-    func configure(with item: ReviewTableViewCellModel) {
+    func configure(with review: ReviewTableViewCellModel) {
         
-        reviewLabel.text = item.comment
-        emailLabel.text = item.email
-        ratingView.rating = item.rating
+        reviewLabel.text = review.comment
+        emailLabel.text = review.email
+        ratingView.rating = review.rating
     }
 }

@@ -19,7 +19,6 @@ final class ShowDetailsViewController: UIViewController {
     // MARK: - Properties
     
     var authInfo: AuthInfo?
-    var showId: Int?
     var show: Show?
     
     private var reviews: [Review] = [] {
@@ -37,15 +36,21 @@ final class ShowDetailsViewController: UIViewController {
         setupTableView()
         fetchReviews()
     }
+    
+    override func viewDidLayoutSubviews() {
+        writeReviewButton.layer.cornerRadius = 24
+    }
 
     // MARK: - Actions
     
     @IBAction private func writeReviewButtonPressed() {
         
+        guard let show = show else { return }
+        
         let storyboard = UIStoryboard(name: "WriteReview", bundle: nil)
         let writeReviewViewController = storyboard.instantiateViewController(withIdentifier: "WriteReviewViewController") as! WriteReviewViewController
         writeReviewViewController.authInfo = authInfo
-        writeReviewViewController.showId = showId
+        writeReviewViewController.showId = Int(show.id)
         writeReviewViewController.delegate = self
         let newNavigationController = UINavigationController(rootViewController: writeReviewViewController)
         navigationController?.present(newNavigationController, animated: true)
@@ -54,9 +59,9 @@ final class ShowDetailsViewController: UIViewController {
     // MARK: - Utility methods
     
     private func fetchReviews() {
-        guard let authInfo = authInfo, let showId = showId else { return }
+        guard let authInfo = authInfo, let show = show else { return }
         AF.request(
-              "https://tv-shows.infinum.academy/shows/\(showId)/reviews",
+            "https://tv-shows.infinum.academy/shows/\(show.id)/reviews",
               method: .get,
               parameters: ["page": "1", "items": "100"],
               headers: HTTPHeaders(authInfo.headers)
@@ -80,7 +85,6 @@ final class ShowDetailsViewController: UIViewController {
     
     private func setupUI() {
         
-        writeReviewButton.layer.cornerRadius = 24
         writeReviewButton.tintColor = .white
         writeReviewButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
         title = show?.title
@@ -103,14 +107,16 @@ extension ShowDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let show = show else { return UITableViewCell.init() }
+        guard let show = show else { return UITableViewCell() }
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTableViewCell", for: indexPath) as! DescriptionTableViewCell
             
-            let item = DescriptionTableViewCellModel(description: show.description,
-                                                     averageRating: show.averageRating,
-                                                     numberOfReviews: reviews.count)
+            let item = DescriptionTableViewCellModel(
+                description: show.description,
+                averageRating: show.averageRating,
+                numberOfReviews: reviews.count
+            )
             cell.configure(with: item)
             
             return cell
@@ -118,9 +124,11 @@ extension ShowDetailsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
             
             let review = reviews[indexPath.row - 1]
-            let item = ReviewTableViewCellModel(comment: review.comment,
-                                                email: review.user.email,
-                                                rating: review.rating)
+            let item = ReviewTableViewCellModel(
+                comment: review.comment,
+                email: review.user.email,
+                rating: review.rating
+            )
             cell.configure(with: item)
             
             return cell
@@ -146,7 +154,7 @@ extension ShowDetailsViewController: WriteReviewViewControllerDelegate {
 
     func addReview(_ newReview: Review) {
         
-        reviews.append(newReview)
+        reviews.insert(newReview, at: 0)
     }
 }
 

@@ -25,10 +25,10 @@ final class DescriptionTableViewCell: UITableViewCell {
     
     // MARK: - Utility methods
     
-    func configure(with item: DescriptionTableViewCellModel) {
+    func configure(with show: DescriptionTableViewCellModel) {
         
-        showDescriptionLabel.text = item.description
-        ratingView.setRoundedRating(item.averageRating ?? 0)
-        reviewInfoLabel.text = "\(item.numberOfReviews ?? 0) REVIEWS, \(item.averageRating ?? 0) AVERAGE"
+        showDescriptionLabel.text = show.description
+        ratingView.setRoundedRating(show.averageRating ?? 0)
+        reviewInfoLabel.text = "\(show.numberOfReviews ?? 0) REVIEWS, \(show.averageRating ?? 0) AVERAGE"
     }
 }
