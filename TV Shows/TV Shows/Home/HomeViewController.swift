@@ -98,7 +98,8 @@ extension HomeViewController: UITableViewDataSource {
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         let title = showsList[indexPath.row].title
-        let item = HomeTableViewCellModel(text: title)
+        let imageUrl = showsList[indexPath.row].imageUrl
+        let item = HomeTableViewCellModel(text: title, imageUrl: imageUrl)
         cell.configure(with: item)
 
         return cell

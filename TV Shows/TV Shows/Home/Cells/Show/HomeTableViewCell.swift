@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class HomeTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
 
     @IBOutlet private weak var showTitleLabel: UILabel!
+    @IBOutlet private weak var iconImageView: UIImageView!
     
     // MARK: - Lifecycle methods
     
@@ -23,6 +25,12 @@ final class HomeTableViewCell: UITableViewCell {
     
     func configure(with item: HomeTableViewCellModel) {
         
+        let url = URL(string: item.imageUrl)
         showTitleLabel.text = item.text
+        iconImageView.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "ic-show-placeholder-vertical")
+        )
+            
     }
 }
