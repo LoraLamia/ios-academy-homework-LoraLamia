@@ -121,23 +121,17 @@ private extension RatingView {
 
     func setRating(_ rating: Int) {
         
-        for index in 0..<ratingButtons.count {
-            if index < rating {
-                ratingButtons[index].isSelected = true
-            } else {
-                ratingButtons[index].isSelected = false
-            }
-        }
+        ratingButtons.enumerated().forEach { index, button in
+                    button.isSelected = index < rating
+                }
     }
 
     func currentSelectedRating() -> Int {
         
-        for index in 0..<ratingButtons.count {
-            if ratingButtons[index].isSelected == false {
-                return index 
-            }
-        }
-        return 5
+        let lastSelectedIndex = ratingButtons
+                    .lastIndex(where: \.isSelected)
+                    .flatMap { $0 + 1 }
+        return lastSelectedIndex ?? 0
     }
 }
 

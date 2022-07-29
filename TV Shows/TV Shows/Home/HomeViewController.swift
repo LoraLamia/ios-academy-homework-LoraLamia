@@ -56,7 +56,6 @@ final class HomeViewController: UIViewController {
         navigationController?.setViewControllers([self], animated: true)
         navigationController?.navigationBar.barTintColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
         navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
-        UINavigationBar.appearance().backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
     }
     
     private func setupTableView() {
