@@ -202,11 +202,28 @@ final class LoginViewController: UIViewController {
                 self.loginButton.transform = CGAffineTransform.identity
             })
         })
+        
+        passwordTextField.shake()
+        emailTextField.shake()
+        
     }
     
     private func handleRegisterErrorCase() {
         let alert = UIAlertController(title: "Error", message: "Incorrect input", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+private extension UITextField {
+    
+    func shake() {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.05
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = CGPoint(x: self.center.x - 4.0, y: self.center.y)
+        animation.toValue = CGPoint(x: self.center.x + 4.0, y: self.center.y)
+        layer.add(animation, forKey: "position")
     }
 }
