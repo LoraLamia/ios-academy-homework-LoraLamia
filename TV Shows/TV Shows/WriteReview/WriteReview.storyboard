@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Write Review View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="WriteReviewViewController" id="Y6W-OH-hqX" customClass="WriteReviewViewController" customModule="TV_Shows" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NaZ-uo-IZs" customClass="RatingView" customModule="TV_Shows" customModuleProvider="target">
+                                <rect key="frame" x="18" y="110.5" width="340" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="340" id="Bh1-5g-e2o"/>
+                                    <constraint firstAttribute="height" constant="40" id="Ooo-hN-tRW"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6X-yH-XY9">
+                                <rect key="frame" x="20" y="74" width="49" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nI-56-nYn">
+                                <rect key="frame" x="20" y="180.5" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LJJ-S3-qcX">
+                                <rect key="frame" x="20" y="217.5" width="374" height="196"/>
+                                <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="0.15312073562318915" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="196" id="rDN-4k-wjA"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsb-rb-cdS">
+                                <rect key="frame" x="20" y="443.5" width="374" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="i7a-Eq-sc9"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Submit"/>
+                                <connections>
+                                    <action selector="submitReviewButton" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ikm-by-a2v"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2nI-56-nYn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="0wl-4x-zUV"/>
+                            <constraint firstItem="NaZ-uo-IZs" firstAttribute="top" secondItem="O6X-yH-XY9" secondAttribute="bottom" constant="16" id="7JU-21-ded"/>
+                            <constraint firstItem="Tsb-rb-cdS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="83J-6u-Ikr"/>
+                            <constraint firstItem="2nI-56-nYn" firstAttribute="top" secondItem="NaZ-uo-IZs" secondAttribute="bottom" constant="30" id="Mvx-VM-czb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LJJ-S3-qcX" secondAttribute="trailing" constant="20" id="O13-Y2-qRl"/>
+                            <constraint firstItem="O6X-yH-XY9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Okp-cg-Owz"/>
+                            <constraint firstItem="NaZ-uo-IZs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="TKR-eS-TkU"/>
+                            <constraint firstItem="O6X-yH-XY9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="We9-Il-148"/>
+                            <constraint firstItem="LJJ-S3-qcX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="bcp-ex-J9Q"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Tsb-rb-cdS" secondAttribute="trailing" constant="20" id="diO-ay-ga4"/>
+                            <constraint firstItem="Tsb-rb-cdS" firstAttribute="top" secondItem="LJJ-S3-qcX" secondAttribute="bottom" constant="30" id="leh-87-3aD"/>
+                            <constraint firstItem="LJJ-S3-qcX" firstAttribute="top" secondItem="2nI-56-nYn" secondAttribute="bottom" constant="16" id="p0P-u2-r2f"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentTextView" destination="LJJ-S3-qcX" id="wj7-tK-AM5"/>
+                        <outlet property="ratingView" destination="NaZ-uo-IZs" id="7g7-kM-Uz8"/>
+                        <outlet property="submitButton" destination="Tsb-rb-cdS" id="wSf-96-Ofg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="61.607142857142854"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

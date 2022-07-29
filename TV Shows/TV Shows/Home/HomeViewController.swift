@@ -5,11 +5,11 @@ import MBProgressHUD
 
 final class HomeViewController: UIViewController {
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     @IBOutlet private weak var showTableView: UITableView!
     
-    //MARK: - Properties
+    // MARK: - Properties
     
     var user: UserResponse?
     var authInfo: AuthInfo?
@@ -35,7 +35,7 @@ final class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    //MARK: - Utility methods
+    // MARK: - Utility methods
     
     private func handleSuccesCase(showsResponse: ShowsResponse) {
         
@@ -50,9 +50,12 @@ final class HomeViewController: UIViewController {
     
     private func setupUI() {
         
-        title = "Shows"
-        navigationController?.setViewControllers([self], animated: true)
         MBProgressHUD.showAdded(to: view, animated: true)
+        title = "Shows"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.setViewControllers([self], animated: true)
+        navigationController?.navigationBar.barTintColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 0.94)
+        navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
     }
     
     private func setupTableView() {
@@ -111,6 +114,11 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        let storyboard = UIStoryboard(name: "ShowDetails", bundle: nil)
+        let showDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
+        showDetailsViewController.authInfo = authInfo
+        showDetailsViewController.show = showsList[indexPath.row]
+        navigationController?.pushViewController(showDetailsViewController, animated: true)
     }
 }
 
