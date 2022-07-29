@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class DescriptionTableViewCell: UITableViewCell {
     
@@ -14,6 +15,7 @@ final class DescriptionTableViewCell: UITableViewCell {
     @IBOutlet private weak var reviewInfoLabel: UILabel!
     @IBOutlet private weak var showDescriptionLabel: UILabel!
     @IBOutlet private weak var ratingView: RatingView!
+    @IBOutlet weak var descriptionImageView: UIImageView!
     
     // MARK: - Lifecycle methods
     
@@ -21,6 +23,7 @@ final class DescriptionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         ratingView.configure(withStyle: .small)
         ratingView.isEnabled = false
+        
     }
     
     // MARK: - Utility methods
@@ -30,5 +33,11 @@ final class DescriptionTableViewCell: UITableViewCell {
         showDescriptionLabel.text = item.description
         ratingView.setRoundedRating(item.averageRating ?? 0)
         reviewInfoLabel.text = "\(item.numberOfReviews ?? 0) REVIEWS, \(item.averageRating ?? 0) AVERAGE"
+        
+        let url = URL(string: item.imageUrl)
+        descriptionImageView.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "ic-show-placeholder-rectangle")
+        )
     }
 }

@@ -110,7 +110,8 @@ extension ShowDetailsViewController: UITableViewDataSource {
             
             let item = DescriptionTableViewCellModel(description: show.description,
                                                      averageRating: show.averageRating,
-                                                     numberOfReviews: reviews.count)
+                                                     numberOfReviews: reviews.count,
+                                                     imageUrl: show.imageUrl)
             cell.configure(with: item)
             
             return cell
