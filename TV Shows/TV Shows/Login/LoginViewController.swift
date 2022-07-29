@@ -88,7 +88,7 @@ final class LoginViewController: UIViewController {
                 let headers = dataResponse.response?.headers.dictionary ?? [:]
                 self.handleSuccesCase(responseUser: responseUser, headers: headers)
             case .failure:
-                self.handleErrorCase()
+                self.handleLoginErrorCase()
             }
         }
     }
@@ -126,7 +126,7 @@ final class LoginViewController: UIViewController {
                 let headers = dataResponse.response?.headers.dictionary ?? [:]
                 self.handleSuccesCase(responseUser: responseUser, headers: headers)
             case .failure:
-                self.handleErrorCase()
+                self.handleRegisterErrorCase()
             }
         }
     }
@@ -196,11 +196,15 @@ final class LoginViewController: UIViewController {
         pushHomeViewController(authInfo: authInfo, responseUser: responseUser)
     }
     
-    private func handleErrorCase() {
+    private func handleLoginErrorCase() {
         UIView.animate(withDuration: 0.7, animations: { self.loginButton.transform = CGAffineTransform.identity.scaledBy(x: 0.7, y: 0.7) }, completion: { (finish) in
             UIView.animate(withDuration: 0.3, animations: {
                 self.loginButton.transform = CGAffineTransform.identity
             })
         })
+    }
+    
+    private func handleRegisterErrorCase() {
+        
     }
 }
