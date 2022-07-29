@@ -145,6 +145,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="emailLabel" destination="MAI-z6-NOh" id="Cjm-ym-OIP"/>
+                                            <outlet property="profilePictureImageView" destination="7LB-Mv-sXN" id="Eq6-LV-Zyx"/>
                                             <outlet property="ratingView" destination="c8H-ih-vUg" id="YQO-MZ-C28"/>
                                             <outlet property="reviewLabel" destination="YPj-6s-PSR" id="LuB-4U-VKu"/>
                                         </connections>

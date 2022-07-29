@@ -121,7 +121,8 @@ extension ShowDetailsViewController: UITableViewDataSource {
             let review = reviews[indexPath.row - 1]
             let item = ReviewTableViewCellModel(comment: review.comment,
                                                 email: review.user.email,
-                                                rating: review.rating)
+                                                rating: review.rating,
+                                                user: review.user)
             cell.configure(with: item)
             
             return cell

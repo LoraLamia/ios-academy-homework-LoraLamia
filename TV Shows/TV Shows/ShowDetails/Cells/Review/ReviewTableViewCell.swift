@@ -14,6 +14,7 @@ final class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var ratingView: RatingView!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
     
     // MARK: - Lifecycle methods
     
@@ -30,5 +31,11 @@ final class ReviewTableViewCell: UITableViewCell {
         reviewLabel.text = item.comment
         emailLabel.text = item.email
         ratingView.rating = item.rating
+        
+        guard let imageUrl = item.user.imageUrl else { return }
+        profilePictureImageView.kf.setImage(
+            with: URL(string: imageUrl),
+            placeholder: UIImage(named: "ic-profile-placeholder")
+        )
     }
 }

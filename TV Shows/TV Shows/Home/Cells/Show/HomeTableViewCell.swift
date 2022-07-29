@@ -31,6 +31,5 @@ final class HomeTableViewCell: UITableViewCell {
             with: url,
             placeholder: UIImage(named: "ic-show-placeholder-vertical")
         )
-            
     }
 }
