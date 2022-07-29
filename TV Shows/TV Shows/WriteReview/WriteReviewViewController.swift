@@ -36,6 +36,11 @@ final class WriteReviewViewController: UIViewController {
         setupNavigationBar()
     }
     
+    override func viewDidLayoutSubviews() {
+        commentTextView.layer.cornerRadius = 10;
+        submitButton.layer.cornerRadius = 24
+    }
+    
     // MARK: - Actions
     
     @IBAction func submitReviewButton() {
@@ -73,11 +78,9 @@ final class WriteReviewViewController: UIViewController {
         
         ratingView.delegate = self
         submitButton.isEnabled = false
-        submitButton.layer.cornerRadius = 24
         submitButton.setTitleColor(.white, for: .disabled)
         submitButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 0.5)
         commentTextView.clipsToBounds = true;
-        commentTextView.layer.cornerRadius = 10;
     }
     
     private func setupNavigationBar() {

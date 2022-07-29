@@ -11,10 +11,10 @@ final class ReviewTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
 
-    @IBOutlet weak var reviewLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var ratingView: RatingView!
-    @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet private weak var profilePictureImageView: UIImageView!
+    @IBOutlet private weak var reviewLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var ratingView: RatingView!
     
     // MARK: - Lifecycle methods
     
@@ -26,13 +26,13 @@ final class ReviewTableViewCell: UITableViewCell {
     
     // MARK: - Utility methods
     
-    func configure(with item: ReviewTableViewCellModel) {
+    func configure(with review: ReviewTableViewCellModel) {
         
-        reviewLabel.text = item.comment
-        emailLabel.text = item.email
-        ratingView.rating = item.rating
-        
-        guard let imageUrl = item.user.imageUrl else { return }
+        reviewLabel.text = review.comment
+        emailLabel.text = review.email
+        ratingView.rating = review.rating
+
+        guard let imageUrl = review.user.imageUrl else { return }
         profilePictureImageView.kf.setImage(
             with: URL(string: imageUrl),
             placeholder: UIImage(named: "ic-profile-placeholder")

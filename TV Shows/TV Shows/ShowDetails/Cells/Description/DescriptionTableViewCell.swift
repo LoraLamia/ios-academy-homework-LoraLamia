@@ -28,13 +28,13 @@ final class DescriptionTableViewCell: UITableViewCell {
     
     // MARK: - Utility methods
     
-    func configure(with item: DescriptionTableViewCellModel) {
+    func configure(with show: DescriptionTableViewCellModel) {
+
+        showDescriptionLabel.text = show.description
+        ratingView.setRoundedRating(show.averageRating ?? 0)
+        reviewInfoLabel.text = "\(show.numberOfReviews ?? 0) REVIEWS, \(show.averageRating ?? 0) AVERAGE"
         
-        showDescriptionLabel.text = item.description
-        ratingView.setRoundedRating(item.averageRating ?? 0)
-        reviewInfoLabel.text = "\(item.numberOfReviews ?? 0) REVIEWS, \(item.averageRating ?? 0) AVERAGE"
-        
-        let url = URL(string: item.imageUrl)
+        let url = URL(string: show.imageUrl)
         descriptionImageView.kf.setImage(
             with: url,
             placeholder: UIImage(named: "ic-show-placeholder-rectangle")
@@ -45,5 +45,6 @@ final class DescriptionTableViewCell: UITableViewCell {
             guard let self = self else { return }
             self.descriptionImageView.alpha = 1
         }
+        
     }
 }

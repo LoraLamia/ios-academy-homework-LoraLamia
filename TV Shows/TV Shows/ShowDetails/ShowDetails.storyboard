@@ -77,6 +77,7 @@
                                                 <constraint firstItem="aBL-Zz-tK2" firstAttribute="leading" secondItem="qNZ-zn-ZJb" secondAttribute="leading" constant="20" id="o1b-0W-fNS"/>
                                                 <constraint firstItem="AH1-AS-Z31" firstAttribute="leading" secondItem="qNZ-zn-ZJb" secondAttribute="leading" constant="20" id="t8w-sA-ESq"/>
                                                 <constraint firstAttribute="trailing" secondItem="0dP-oK-5SZ" secondAttribute="trailing" constant="20" id="tce-b7-7sP"/>
+                                                <constraint firstAttribute="trailing" secondItem="cHH-hC-y1i" secondAttribute="trailing" constant="20" id="woF-DC-TTk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

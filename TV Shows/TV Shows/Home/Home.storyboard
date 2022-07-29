@@ -29,7 +29,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dg-6x-6Bq">
-                                                    <rect key="frame" x="104" y="46" width="41.5" height="20.5"/>
+                                                    <rect key="frame" x="104" y="46" width="290" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -45,6 +45,7 @@
                                             <constraints>
                                                 <constraint firstItem="EmC-Io-FNP" firstAttribute="leading" secondItem="zPu-Yc-daO" secondAttribute="leading" constant="16" id="J5L-vb-yU9"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="EmC-Io-FNP" secondAttribute="bottom" constant="11" id="QKy-3H-nUk"/>
+                                                <constraint firstAttribute="trailing" secondItem="0dg-6x-6Bq" secondAttribute="trailing" constant="20" id="WAc-XG-nj6"/>
                                                 <constraint firstItem="0dg-6x-6Bq" firstAttribute="top" secondItem="zPu-Yc-daO" secondAttribute="top" constant="46" id="XSk-uB-kwT"/>
                                                 <constraint firstItem="0dg-6x-6Bq" firstAttribute="leading" secondItem="EmC-Io-FNP" secondAttribute="trailing" constant="24" id="fFQ-6l-ynH"/>
                                                 <constraint firstItem="EmC-Io-FNP" firstAttribute="top" secondItem="zPu-Yc-daO" secondAttribute="top" constant="12" id="sT1-Ru-adf"/>
