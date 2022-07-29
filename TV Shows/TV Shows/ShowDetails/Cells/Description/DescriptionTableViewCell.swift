@@ -39,5 +39,11 @@ final class DescriptionTableViewCell: UITableViewCell {
             with: url,
             placeholder: UIImage(named: "ic-show-placeholder-rectangle")
         )
+        
+        descriptionImageView.alpha = 0
+        UIView.animate(withDuration: 0.7) { [weak self] in
+            guard let self = self else { return }
+            self.descriptionImageView.alpha = 1
+        }
     }
 }
