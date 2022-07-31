@@ -192,6 +192,12 @@ final class LoginViewController: UIViewController {
     
     private func handleSuccesCase(responseUser: UserResponse, headers: [String: String]) {
         guard let authInfo = try? AuthInfo(headers: headers) else { return }
+        
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(authInfo) {
+            UserDefaults.standard.set(encoded, forKey: UserDefaultsKeys.authInfo.rawValue)
+        }
+        
         user = responseUser
         pushHomeViewController(authInfo: authInfo, responseUser: responseUser)
     }

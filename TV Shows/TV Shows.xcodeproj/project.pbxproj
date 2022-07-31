@@ -15,6 +15,7 @@
 		4228A56C28915AE300F5AB30 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228A56B28915AE300F5AB30 /* RatingView.swift */; };
 		4228A56E28916A2800F5AB30 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228A56D28916A2800F5AB30 /* ReviewTableViewCell.swift */; };
 		422F634F2892A9FB0020B03D /* ReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422F634E2892A9FB0020B03D /* ReviewResponse.swift */; };
+		423D1F1528969C4300EA7677 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423D1F1428969C4300EA7677 /* UserDefaultsKeys.swift */; };
 		425FFE092891B291000CD73F /* DescriptionTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FFE082891B291000CD73F /* DescriptionTableViewCellModel.swift */; };
 		425FFE0B2891B342000CD73F /* ReviewTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425FFE0A2891B342000CD73F /* ReviewTableViewCellModel.swift */; };
 		42766E302875F80A00CF7E3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42766E2F2875F80A00CF7E3D /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		4228A56B28915AE300F5AB30 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4228A56D28916A2800F5AB30 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		422F634E2892A9FB0020B03D /* ReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponse.swift; sourceTree = "<group>"; };
+		423D1F1428969C4300EA7677 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		425FFE082891B291000CD73F /* DescriptionTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCellModel.swift; sourceTree = "<group>"; };
 		425FFE0A2891B342000CD73F /* ReviewTableViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCellModel.swift; sourceTree = "<group>"; };
 		42766E2C2875F80A00CF7E3D /* TV Shows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Shows.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,7 @@
 				42766E382875F80C00CF7E3D /* Assets.xcassets */,
 				42766E3A2875F80C00CF7E3D /* LaunchScreen.storyboard */,
 				42766E3D2875F80C00CF7E3D /* Info.plist */,
+				423D1F1428969C4300EA7677 /* UserDefaultsKeys.swift */,
 			);
 			path = "TV Shows";
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				427D03E828784B7200BBA855 /* LoginViewController.swift in Sources */,
 				4228A563288EC7FB00F5AB30 /* WriteReviewViewController.swift in Sources */,
 				4228A560288EA51800F5AB30 /* DescriptionTableViewCell.swift in Sources */,
+				423D1F1528969C4300EA7677 /* UserDefaultsKeys.swift in Sources */,
 				422F634F2892A9FB0020B03D /* ReviewResponse.swift in Sources */,
 				42C836A6288C6C8000F206E1 /* ReviewsResponse.swift in Sources */,
 				425FFE092891B291000CD73F /* DescriptionTableViewCellModel.swift in Sources */,
