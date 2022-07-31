@@ -211,7 +211,6 @@ final class LoginViewController: UIViewController {
         
         passwordTextField.shake()
         emailTextField.shake()
-        
     }
     
     private func handleRegisterErrorCase() {

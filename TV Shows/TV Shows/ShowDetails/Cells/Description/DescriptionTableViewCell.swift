@@ -45,6 +45,5 @@ final class DescriptionTableViewCell: UITableViewCell {
             guard let self = self else { return }
             self.descriptionImageView.alpha = 1
         }
-        
     }
 }
