@@ -10,18 +10,26 @@ import Alamofire
 import MBProgressHUD
 import Kingfisher
 
-final class ProfileDetailsViewController: UIViewController {
+final class ProfileDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // MARK: - Outlets
     
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var logoutButton: UIButton!
     @IBOutlet private weak var changePhotoButton: UIButton!
-    @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet private weak var profilePictureImageView: UIImageView!
+    
+    // MARK: - Properties
     
     var authInfo: AuthInfo?
     var userDetails: UserResponse?
+    let imagePicker = UIImagePickerController()
+    
+    // MARK: - Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
         
         fetchUserDetails()
         setupNavigationBar()
@@ -33,6 +41,25 @@ final class ProfileDetailsViewController: UIViewController {
     }
     
     // PARAMETERS????
+    
+    // MARK: - Actions
+    
+    @IBAction func changePhotoButtonPressed() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+                
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func logoutButtonPressed() {
+        
+//        dismiss(animated: true, completion: {
+//            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.authInfo.rawValue)
+//            NotificationCenter.default.post(name: Notification.Name("Youlogedout"), object: nil)
+//            })
+    }
+    
+    // MARK: - Utility methods
     
     private func fetchUserDetails() {
         
@@ -52,7 +79,7 @@ final class ProfileDetailsViewController: UIViewController {
               case .success(let userResponse):
                   self.handleSuccessCase(userResponse: userResponse)
               case .failure:
-                  print("error")
+                  self.handleErrorCase()
               }
           }
     }
@@ -89,6 +116,10 @@ final class ProfileDetailsViewController: UIViewController {
         )
     }
     
+    private func handleErrorCase() {
+        print("error")
+    }
+    
 }
 
 // MARK: - Action handlers
@@ -100,3 +131,5 @@ private extension ProfileDetailsViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+
+
