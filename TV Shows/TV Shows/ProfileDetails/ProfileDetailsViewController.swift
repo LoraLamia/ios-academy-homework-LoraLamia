@@ -6,24 +6,97 @@
 //
 
 import UIKit
+import Alamofire
+import MBProgressHUD
+import Kingfisher
 
-class ProfileDetailsViewController: UIViewController {
+final class ProfileDetailsViewController: UIViewController {
+    
+    @IBOutlet private weak var emailLabel: UILabel!
+    @IBOutlet private weak var logoutButton: UIButton!
+    @IBOutlet private weak var changePhotoButton: UIButton!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
+    
+    var authInfo: AuthInfo?
+    var userDetails: UserResponse?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        fetchUserDetails()
+        setupNavigationBar()
+        setupUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        logoutButton.layer.cornerRadius = 24
     }
-    */
+    
+    // PARAMETERS????
+    
+    private func fetchUserDetails() {
+        
+        MBProgressHUD.showAdded(to: view, animated: true)
+        guard let authInfo = authInfo else { return }
+        AF.request(
+              "https://tv-shows.infinum.academy/users/me",
+              method: .get,
+              parameters: [:],
+              headers: HTTPHeaders(authInfo.headers)
+          )
+          .validate()
+          .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
+              guard let self = self else { return }
+              MBProgressHUD.hide(for: self.view, animated: true)
+              switch dataResponse.result {
+              case .success(let userResponse):
+                  self.handleSuccessCase(userResponse: userResponse)
+              case .failure:
+                  print("error")
+              }
+          }
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
+        title = "My Account"
+        navigationController?.navigationBar.tintColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closePressed(_:)))
+    }
+    
+    private func setupUI() {
+        
+        logoutButton.isEnabled = true
+        logoutButton.setTitleColor(.white, for: .normal)
+        logoutButton.backgroundColor = UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1)
+        changePhotoButton.setTitleColor(UIColor(red: 82/255, green: 54/255, blue: 140/255, alpha: 1), for: .normal)
+        emailLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+    }
+    
+    // PLACEHOLDER???
+    
+    private func handleSuccessCase(userResponse: UserResponse) {
+        
+        self.userDetails = userResponse
+        guard let userDetails = userDetails else { print("nema usera"); return }
+        emailLabel.text = userDetails.user.email
+        
+        guard let image = userDetails.user.imageUrl else { return }
+        let url = URL(string: image)
+        profilePictureImageView.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "ic-profile-placeholder")
+        )
+    }
+    
+}
 
+// MARK: - Action handlers
+
+private extension ProfileDetailsViewController {
+
+    @objc
+    func closePressed(_ button: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
 }

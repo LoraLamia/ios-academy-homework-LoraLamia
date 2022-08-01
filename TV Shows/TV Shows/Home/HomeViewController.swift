@@ -43,6 +43,7 @@ final class HomeViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "ProfileDetails", bundle: nil)
         let profileDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ProfileDetailsViewController") as! ProfileDetailsViewController
+        profileDetailsViewController.authInfo = authInfo
         let newNavigationController = UINavigationController(rootViewController: profileDetailsViewController)
         navigationController?.present(newNavigationController, animated: true)
     }
