@@ -22,7 +22,11 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
     // MARK: - Properties
     
     var authInfo: AuthInfo?
-    var userDetails: UserResponse?
+    var userDetails: UserResponse? {
+        didSet {
+            self.reloadInputViews()
+        }
+    }
     let imagePicker = UIImagePickerController()
     
     // MARK: - Lifecycle methods
@@ -45,7 +49,7 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
     // MARK: - Actions
     
     @IBAction func changePhotoButtonPressed() {
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
                 
         present(imagePicker, animated: true, completion: nil)
@@ -84,6 +88,48 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
           }
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profilePictureImageView.contentMode = .scaleAspectFit
+            //profilePictureImageView.image = pickedImage
+            storeImage(pickedImage)
+        }
+        print("ova funckija se poziva")
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // WEAK SELF I TO?????
+    
+    func storeImage(_ image: UIImage) {
+        guard let imageData = image.jpegData(compressionQuality: 0.9) else { return }
+
+        let requestData = MultipartFormData()
+        requestData.append(
+            imageData,
+            withName: "image",
+            fileName: "image.jpg",
+            mimeType: "image/jpg"
+        )
+        
+        AF
+            .upload(
+                multipartFormData: requestData,
+                to: "https://tv-shows.infinum.academy/users",
+                method: .put
+            )
+            .validate()
+            .responseDecodable(of: UserResponse.self) { dataResponse in
+                switch dataResponse.result {
+                case .success(let userResponse):
+                    //self.userDetails = userResponse
+                    print("success")
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
+    }
+    
     private func setupNavigationBar() {
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 0.94)
         title = "My Account"
@@ -114,6 +160,10 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
             with: url,
             placeholder: UIImage(named: "ic-profile-placeholder")
         )
+    }
+    
+    private func handleGetImageSuccessCase(userResponse: UserResponse) {
+        
     }
     
     private func handleErrorCase() {
