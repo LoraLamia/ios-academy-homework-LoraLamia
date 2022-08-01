@@ -22,11 +22,7 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
     // MARK: - Properties
     
     var authInfo: AuthInfo?
-    var userDetails: UserResponse? {
-        didSet {
-            self.reloadInputViews()
-        }
-    }
+    var userDetails: UserResponse?
     let imagePicker = UIImagePickerController()
     
     // MARK: - Lifecycle methods
@@ -91,7 +87,6 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profilePictureImageView.contentMode = .scaleAspectFit
-            //profilePictureImageView.image = pickedImage
             storeImage(pickedImage)
         }
         print("ova funckija se poziva")
@@ -99,10 +94,8 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
         dismiss(animated: true, completion: nil)
     }
     
-    // WEAK SELF I TO?????
-    
     func storeImage(_ image: UIImage) {
-        guard let imageData = image.jpegData(compressionQuality: 0.9) else { return }
+        guard let authInfo = authInfo, let userDetails = userDetails, let imageData = image.jpegData(compressionQuality: 0.9) else { return }
 
         let requestData = MultipartFormData()
         requestData.append(
@@ -112,17 +105,21 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
             mimeType: "image/jpg"
         )
         
+        requestData.append(Data(userDetails.user.email.utf8), withName: "email")
+    
         AF
             .upload(
                 multipartFormData: requestData,
                 to: "https://tv-shows.infinum.academy/users",
-                method: .put
+                method: .put,
+                headers: HTTPHeaders(authInfo.headers)
             )
             .validate()
-            .responseDecodable(of: UserResponse.self) { dataResponse in
+            .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
+                guard let self = self else { return }
                 switch dataResponse.result {
                 case .success(let userResponse):
-                    //self.userDetails = userResponse
+                    self.handleSuccessCase(userResponse: userResponse)
                     print("success")
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")
