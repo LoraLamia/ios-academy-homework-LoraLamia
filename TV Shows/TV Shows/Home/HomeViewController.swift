@@ -40,7 +40,11 @@ final class HomeViewController: UIViewController {
     
     @objc
     private func profileDetailsActionHandler() {
-          print("click")
+        
+        let storyboard = UIStoryboard(name: "ProfileDetails", bundle: nil)
+        let profileDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ProfileDetailsViewController") as! ProfileDetailsViewController
+        let newNavigationController = UINavigationController(rootViewController: profileDetailsViewController)
+        navigationController?.present(newNavigationController, animated: true)
     }
     
     // MARK: - Utility methods
