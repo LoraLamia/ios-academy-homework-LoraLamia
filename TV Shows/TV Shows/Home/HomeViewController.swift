@@ -26,6 +26,7 @@ final class HomeViewController: UIViewController {
         
         setupUI()
         setupTableView()
+        setupProfileDetailsButton()
         fetchShows()
     }
     
@@ -33,6 +34,13 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    private func profileDetailsActionHandler() {
+          print("click")
     }
     
     // MARK: - Utility methods
@@ -61,6 +69,16 @@ final class HomeViewController: UIViewController {
     private func setupTableView() {
         showTableView.delegate = self
         showTableView.dataSource = self
+    }
+    
+    private func setupProfileDetailsButton() {
+        let profileDetailsItem = UIBarButtonItem(
+                  image: UIImage(named: "ic-profile"),
+                  style: .plain,
+                  target: self,
+                  action: #selector(profileDetailsActionHandler)
+                )
+                navigationItem.rightBarButtonItem = profileDetailsItem
     }
     
     private func fetchShows() {
