@@ -91,7 +91,7 @@ final class HomeViewController: UIViewController {
         
         guard let authInfo = authInfo else { return }
         AF.request(
-              "https://tv-shows.infinum.academy/shows",
+              Urls.shows.rawValue,
               method: .get,
               parameters: ["page": "1", "items": "100"],
               headers: HTTPHeaders(authInfo.headers)

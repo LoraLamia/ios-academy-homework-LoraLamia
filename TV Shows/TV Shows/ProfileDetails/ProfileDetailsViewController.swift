@@ -28,7 +28,7 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
     weak var delegate: ProfileDetailsViewControllerDelegate?
     var authInfo: AuthInfo?
     var userDetails: UserResponse?
-    let imagePicker = UIImagePickerController()
+    private let imagePicker = UIImagePickerController()
     
     // MARK: - Lifecycle methods
 
@@ -112,7 +112,7 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
         AF
             .upload(
                 multipartFormData: requestData,
-                to: "https://tv-shows.infinum.academy/users",
+                to: Urls.user.rawValue,
                 method: .put,
                 headers: HTTPHeaders(authInfo.headers)
             )
@@ -159,7 +159,10 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
     }
     
     private func handleErrorCase() {
-        print("error")
+        
+        let alert = UIAlertController(title: "Oops!", message: "Something went wrong, please try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

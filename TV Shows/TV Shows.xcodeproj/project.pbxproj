@@ -35,6 +35,7 @@
 		42C836A0288C680100F206E1 /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C8369F288C680100F206E1 /* ShowDetailsViewController.swift */; };
 		42C836A2288C682200F206E1 /* ShowDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42C836A1288C682200F206E1 /* ShowDetails.storyboard */; };
 		42C836A6288C6C8000F206E1 /* ReviewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C836A5288C6C8000F206E1 /* ReviewsResponse.swift */; };
+		42DA583B289921E100368CF0 /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA583A289921E100368CF0 /* URLs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		42C8369F288C680100F206E1 /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
 		42C836A1288C682200F206E1 /* ShowDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowDetails.storyboard; sourceTree = "<group>"; };
 		42C836A5288C6C8000F206E1 /* ReviewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsResponse.swift; sourceTree = "<group>"; };
+		42DA583A289921E100368CF0 /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		578D1EFE1B36AD062C2E8E59 /* Pods-TV Shows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.release.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.release.xcconfig"; sourceTree = "<group>"; };
 		629A790561D4219D40C7211E /* Pods-TV Shows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Shows.debug.xcconfig"; path = "Target Support Files/Pods-TV Shows/Pods-TV Shows.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,6 +202,7 @@
 				42766E3A2875F80C00CF7E3D /* LaunchScreen.storyboard */,
 				42766E3D2875F80C00CF7E3D /* Info.plist */,
 				423D1F1428969C4300EA7677 /* UserDefaultsKeys.swift */,
+				42DA583A289921E100368CF0 /* URLs.swift */,
 			);
 			path = "TV Shows";
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				422F634F2892A9FB0020B03D /* ReviewResponse.swift in Sources */,
 				42C836A6288C6C8000F206E1 /* ReviewsResponse.swift in Sources */,
 				425FFE092891B291000CD73F /* DescriptionTableViewCellModel.swift in Sources */,
+				42DA583B289921E100368CF0 /* URLs.swift in Sources */,
 				4228A56E28916A2800F5AB30 /* ReviewTableViewCell.swift in Sources */,
 				423794EA2897EB3C00AF1298 /* ProfileDetailsViewController.swift in Sources */,
 				42766E302875F80A00CF7E3D /* AppDelegate.swift in Sources */,
