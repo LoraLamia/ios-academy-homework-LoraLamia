@@ -9,5 +9,5 @@ import Foundation
 
 struct HomeTableViewCellModel {
     let text: String
-    let imageUrl: String
+    let imageUrl: URL
 }

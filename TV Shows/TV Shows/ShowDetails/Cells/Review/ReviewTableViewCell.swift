@@ -34,7 +34,7 @@ final class ReviewTableViewCell: UITableViewCell {
 
         guard let imageUrl = review.user.imageUrl else { return }
         profilePictureImageView.kf.setImage(
-            with: URL(string: imageUrl),
+            with: imageUrl,
             placeholder: UIImage(named: "ic-profile-placeholder")
         )
     }
