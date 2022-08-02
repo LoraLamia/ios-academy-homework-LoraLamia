@@ -11,6 +11,7 @@ final class ReviewTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
 
+    @IBOutlet private weak var profilePictureImageView: UIImageView!
     @IBOutlet private weak var reviewLabel: UILabel!
     @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var ratingView: RatingView!
@@ -30,5 +31,11 @@ final class ReviewTableViewCell: UITableViewCell {
         reviewLabel.text = review.comment
         emailLabel.text = review.email
         ratingView.rating = review.rating
+
+        guard let imageUrl = review.user.imageUrl else { return }
+        profilePictureImageView.kf.setImage(
+            with: imageUrl,
+            placeholder: UIImage(named: "ic-profile-placeholder")
+        )
     }
 }

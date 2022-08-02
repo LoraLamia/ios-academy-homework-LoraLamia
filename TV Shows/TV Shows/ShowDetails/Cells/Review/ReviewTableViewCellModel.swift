@@ -11,4 +11,5 @@ struct ReviewTableViewCellModel {
     let comment: String?
     let email: String
     let rating: Int
+    let user: User
 }

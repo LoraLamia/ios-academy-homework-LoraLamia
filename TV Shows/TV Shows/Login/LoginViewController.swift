@@ -88,7 +88,7 @@ final class LoginViewController: UIViewController {
                 let headers = dataResponse.response?.headers.dictionary ?? [:]
                 self.handleSuccesCase(responseUser: responseUser, headers: headers)
             case .failure:
-                self.handleErrorCase()
+                self.handleLoginErrorCase()
             }
         }
     }
@@ -126,7 +126,7 @@ final class LoginViewController: UIViewController {
                 let headers = dataResponse.response?.headers.dictionary ?? [:]
                 self.handleSuccesCase(responseUser: responseUser, headers: headers)
             case .failure:
-                self.handleErrorCase()
+                self.handleRegisterErrorCase()
             }
         }
     }
@@ -192,14 +192,43 @@ final class LoginViewController: UIViewController {
     
     private func handleSuccesCase(responseUser: UserResponse, headers: [String: String]) {
         guard let authInfo = try? AuthInfo(headers: headers) else { return }
+        
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(authInfo) {
+            UserDefaults.standard.set(encoded, forKey: UserDefaultsKeys.authInfo.rawValue)
+        }
+        
         user = responseUser
         pushHomeViewController(authInfo: authInfo, responseUser: responseUser)
     }
     
-    private func handleErrorCase() {
+    private func handleLoginErrorCase() {
+        UIView.animate(withDuration: 0.7, animations: { self.loginButton.transform = CGAffineTransform.identity.scaledBy(x: 0.7, y: 0.7) }, completion: { (finish) in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.loginButton.transform = CGAffineTransform.identity
+            })
+        })
+        
+        passwordTextField.shake()
+        emailTextField.shake()
+    }
+    
+    private func handleRegisterErrorCase() {
         let alert = UIAlertController(title: "Error", message: "Incorrect input", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default))
         self.present(alert, animated: true, completion: nil)
     }
+}
+
+private extension UITextField {
     
+    func shake() {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.05
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = CGPoint(x: self.center.x - 4.0, y: self.center.y)
+        animation.toValue = CGPoint(x: self.center.x + 4.0, y: self.center.y)
+        layer.add(animation, forKey: "position")
+    }
 }
