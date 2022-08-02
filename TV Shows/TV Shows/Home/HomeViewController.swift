@@ -26,6 +26,7 @@ final class HomeViewController: UIViewController {
         
         setupUI()
         setupTableView()
+        setupProfileDetailsButton()
         fetchShows()
     }
     
@@ -33,6 +34,19 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    private func profileDetailsActionHandler() {
+        
+        let storyboard = UIStoryboard(name: "ProfileDetails", bundle: nil)
+        let profileDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ProfileDetailsViewController") as! ProfileDetailsViewController
+        profileDetailsViewController.delegate = self
+        profileDetailsViewController.authInfo = authInfo
+        let newNavigationController = UINavigationController(rootViewController: profileDetailsViewController)
+        navigationController?.present(newNavigationController, animated: true)
     }
     
     // MARK: - Utility methods
@@ -63,11 +77,21 @@ final class HomeViewController: UIViewController {
         showTableView.dataSource = self
     }
     
+    private func setupProfileDetailsButton() {
+        let profileDetailsItem = UIBarButtonItem(
+                  image: UIImage(named: "ic-profile"),
+                  style: .plain,
+                  target: self,
+                  action: #selector(profileDetailsActionHandler)
+                )
+                navigationItem.rightBarButtonItem = profileDetailsItem
+    }
+    
     private func fetchShows() {
         
         guard let authInfo = authInfo else { return }
         AF.request(
-              "https://tv-shows.infinum.academy/shows",
+              Urls.shows.rawValue,
               method: .get,
               parameters: ["page": "1", "items": "100"],
               headers: HTTPHeaders(authInfo.headers)
@@ -123,6 +147,15 @@ extension HomeViewController: UITableViewDelegate {
         showDetailsViewController.authInfo = authInfo
         showDetailsViewController.show = showsList[indexPath.row]
         navigationController?.pushViewController(showDetailsViewController, animated: true)
+    }
+}
+
+extension HomeViewController: ProfileDetailsViewControllerDelegate {
+    
+    func logout() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        navigationController?.setViewControllers([loginViewController], animated: true)
     }
 }
 

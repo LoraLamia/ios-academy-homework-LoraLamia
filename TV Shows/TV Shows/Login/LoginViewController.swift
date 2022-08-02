@@ -74,7 +74,7 @@ final class LoginViewController: UIViewController {
         MBProgressHUD.showAdded(to: view, animated: true)
 
         AF.request(
-            "https://tv-shows.infinum.academy/users/sign_in",
+            Urls.signIn.rawValue,
             method: .post,
             parameters: parameters,
             encoder: JSONParameterEncoder.default
@@ -112,7 +112,7 @@ final class LoginViewController: UIViewController {
         MBProgressHUD.showAdded(to: view, animated: true)
 
         AF.request(
-            "https://tv-shows.infinum.academy/users",
+            Urls.user.rawValue,
             method: .post,
             parameters: parameters,
             encoder: JSONParameterEncoder.default

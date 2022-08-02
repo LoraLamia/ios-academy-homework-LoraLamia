@@ -54,7 +54,7 @@ final class WriteReviewViewController: UIViewController {
         ]
         
         AF.request(
-              "https://tv-shows.infinum.academy/reviews",
+              Urls.review.rawValue,
               method: .post,
               parameters: parameters,
               headers: HTTPHeaders(authInfo.headers)
