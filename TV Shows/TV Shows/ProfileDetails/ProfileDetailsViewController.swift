@@ -150,8 +150,7 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
         guard let userDetails = userDetails else { return }
         emailLabel.text = userDetails.user.email
         
-        guard let image = userDetails.user.imageUrl else { return }
-        let url = URL(string: image)
+        guard let url = userDetails.user.imageUrl else { return }
         profilePictureImageView.kf.setImage(
             with: url,
             placeholder: UIImage(named: "ic-profile-placeholder")
