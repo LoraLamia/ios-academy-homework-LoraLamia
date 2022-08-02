@@ -25,7 +25,7 @@ final class HomeTableViewCell: UITableViewCell {
     
     func configure(with item: HomeTableViewCellModel) {
         
-        let url = URL(string: item.imageUrl)
+        let url = item.imageUrl
         showTitleLabel.text = item.text
         iconImageView.kf.setImage(
             with: url,

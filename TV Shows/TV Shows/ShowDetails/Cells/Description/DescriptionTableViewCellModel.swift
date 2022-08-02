@@ -11,5 +11,5 @@ struct DescriptionTableViewCellModel {
     let description: String?
     let averageRating: Double?
     let numberOfReviews: Int?
-    let imageUrl: String
+    let imageUrl: URL
 }

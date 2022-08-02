@@ -34,7 +34,7 @@ final class DescriptionTableViewCell: UITableViewCell {
         ratingView.setRoundedRating(show.averageRating ?? 0)
         reviewInfoLabel.text = "\(show.numberOfReviews ?? 0) REVIEWS, \(show.averageRating ?? 0) AVERAGE"
         
-        let url = URL(string: show.imageUrl)
+        let url = show.imageUrl
         descriptionImageView.kf.setImage(
             with: url,
             placeholder: UIImage(named: "ic-show-placeholder-rectangle")
