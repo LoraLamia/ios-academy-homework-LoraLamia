@@ -43,6 +43,7 @@ final class HomeViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "ProfileDetails", bundle: nil)
         let profileDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ProfileDetailsViewController") as! ProfileDetailsViewController
+        profileDetailsViewController.delegate = self
         profileDetailsViewController.authInfo = authInfo
         let newNavigationController = UINavigationController(rootViewController: profileDetailsViewController)
         navigationController?.present(newNavigationController, animated: true)
@@ -145,6 +146,15 @@ extension HomeViewController: UITableViewDelegate {
         showDetailsViewController.authInfo = authInfo
         showDetailsViewController.show = showsList[indexPath.row]
         navigationController?.pushViewController(showDetailsViewController, animated: true)
+    }
+}
+
+extension HomeViewController: ProfileDetailsViewControllerDelegate {
+    
+    func logout() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        navigationController?.setViewControllers([loginViewController], animated: true)
     }
 }
 

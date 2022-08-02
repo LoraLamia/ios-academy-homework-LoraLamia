@@ -10,6 +10,10 @@ import Alamofire
 import MBProgressHUD
 import Kingfisher
 
+protocol ProfileDetailsViewControllerDelegate: AnyObject {
+    func logout()
+}
+
 final class ProfileDetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Outlets
@@ -21,6 +25,7 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
     
     // MARK: - Properties
     
+    weak var delegate: ProfileDetailsViewControllerDelegate?
     var authInfo: AuthInfo?
     var userDetails: UserResponse?
     let imagePicker = UIImagePickerController()
@@ -51,10 +56,10 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
     
     @IBAction func logoutButtonPressed() {
         
-//        dismiss(animated: true, completion: {
-//            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.authInfo.rawValue)
-//            NotificationCenter.default.post(name: Notification.Name("Youlogedout"), object: nil)
-//            })
+        dismiss(animated: true, completion: {
+            UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.authInfo.rawValue)
+            self.delegate?.logout()
+            })
     }
     
     // MARK: - Utility methods
