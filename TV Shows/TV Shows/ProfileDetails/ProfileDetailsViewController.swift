@@ -40,8 +40,6 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
         logoutButton.layer.cornerRadius = 24
     }
     
-    // PARAMETERS????
-    
     // MARK: - Actions
     
     @IBAction func changePhotoButtonPressed() {
@@ -89,7 +87,6 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
             profilePictureImageView.contentMode = .scaleAspectFit
             storeImage(pickedImage)
         }
-        print("ova funckija se poziva")
         
         dismiss(animated: true, completion: nil)
     }
@@ -120,9 +117,8 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
                 switch dataResponse.result {
                 case .success(let userResponse):
                     self.handleSuccessCase(userResponse: userResponse)
-                    print("success")
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
+                case .failure:
+                    self.handleErrorCase()
                 }
             }
     }
@@ -143,12 +139,10 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
         emailLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
     }
     
-    // PLACEHOLDER???
-    
     private func handleSuccessCase(userResponse: UserResponse) {
         
         self.userDetails = userResponse
-        guard let userDetails = userDetails else { print("nema usera"); return }
+        guard let userDetails = userDetails else { return }
         emailLabel.text = userDetails.user.email
         
         guard let image = userDetails.user.imageUrl else { return }
@@ -157,10 +151,6 @@ final class ProfileDetailsViewController: UIViewController, UIImagePickerControl
             with: url,
             placeholder: UIImage(named: "ic-profile-placeholder")
         )
-    }
-    
-    private func handleGetImageSuccessCase(userResponse: UserResponse) {
-        
     }
     
     private func handleErrorCase() {
